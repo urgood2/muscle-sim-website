@@ -1,0 +1,5 @@
+baseURL = 'http://bearforge.org/'
+languageCode = 'en-us'
+title = 'Muscle Sim'
+theme = 'ananke'
+disqusShortname = 'BEAR'
