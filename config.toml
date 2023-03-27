@@ -1,5 +1,5 @@
 baseURL = 'http://bearforge.org/'
 languageCode = 'en-us'
 title = 'Muscle Sim'
-theme = 'hugo-clarity'
+theme = 'hermit'
 disqusShortname = 'BEAR'
