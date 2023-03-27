@@ -58,12 +58,12 @@ disqusShortname = 'BEAR'
 
 #[menu]
 
-#  [[menu.main]]
-#    name = "Posts"
-#    url = "posts/"
-#    weight = 10
+  [[menu.main]]
+    name = "Posts"
+    url = "posts/"
+    weight = 10
 
-#  [[menu.main]]
-#    name = "About"
-#    url = "about-hugo/"
-#    weight = 20
+  [[menu.main]]
+    name = "About"
+    url = "about-byteden/"
+    weight = 20
