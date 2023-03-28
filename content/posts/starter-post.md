@@ -1,10 +1,12 @@
 ---
 title: "Starter Post"
 date: 2023-03-28T01:08:50+09:00
-draft: true
+draft: false
 toc: false
 images:
 tags: 
-  - untagged
+  - Starter
 ---
 
+- Loading screen
+- Caves, ponds, trees, bushes, and walls

@@ -1,5 +1,5 @@
 ---
-title: "About Byteden"
+title: "About Brawn Bastion"
 date: 2023-03-28T01:08:30+09:00
 draft: false
 ---
