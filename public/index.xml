@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>My Digital Garden</title>
+    <link>https://www.example.com/</link>
+    <description>Recent content on My Digital Garden</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Nigalya Ponya ©</copyright>
+    <atom:link href="https://www.example.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>About Us</title>
+      <link>https://www.example.com/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://www.example.com/about/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Pateron</title>
+      <link>https://www.example.com/pateron/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://www.example.com/pateron/</guid>
+      <description>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur est odit ea voluptate id minus, repudiandae rem reprehenderit molestiae itaque ratione eligendi fuga, nam porro deleniti, voluptatibus recusandae rerum? Dolores, nobis in. Deserunt, placeat. Est dolorem debitis exercitationem quis enim, ullam illo aperiam beatae eius! Laboriosam doloribus fugiat placeat, nesciunt consequuntur consectetur officiis voluptatum modi saepe eligendi, voluptatem nemo incidunt dicta fuga obcaecati voluptate ducimus quasi qui deserunt reiciendis! Nihil ab ducimus ipsa ut in fugit.</description>
+    </item>
+    <item>
+      <title>Work</title>
+      <link>https://www.example.com/work/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://www.example.com/work/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

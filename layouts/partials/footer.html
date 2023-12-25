@@ -1,0 +1,12 @@
+<div class="container">
+    <div class="row justify-content-between">
+        <div class="col-sm-6 col-12">
+            <p class="footer iscii">{{ .Site.Copyright }} {{ now.Format "2006"}} </p>
+        </div>
+        <div class="col-sm-6 col-12 d-flex flex-row-reverse">
+            {{ range .Site.Params.Social }}
+            <a class="footer-social px-2" {{ with .rel }} rel="{{ . }}" {{ end }} href="{{ .link }}" target="_blank"><i class="{{ .icon }}"></i></a>
+            {{ end }}
+        </div>
+    </div>
+</div>

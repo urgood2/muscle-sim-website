@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'MxPlus Tandy1K-II 200L';
+    src: url('MxPlus_Tandy1K-II_200L.woff2') format('woff2'),
+        url('MxPlus_Tandy1K-II_200L.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+

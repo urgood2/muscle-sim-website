@@ -1,5 +1,95 @@
-baseURL = 'http://bearforge.org/'
-languageCode = 'en-us'
-title = 'Muscle Sim'
-theme = 'hermit'
-disqusShortname = 'BEAR'
+baseURL = "/"
+languageCode = "en-us"
+title = "Brawn Bastion"
+copyright = "Brawn Bastion ©"
+
+
+[params]
+  name = "Byteden Games"
+  author_avatar = "https://static.vecteezy.com/system/resources/thumbnails/003/337/584/small/default-avatar-photo-placeholder-profile-icon-vector.jpg"
+  description = "The Muscle Community"
+  # links = "#Future links can be placed here"
+  initials = "☺"
+  googleAnalytics = ""
+  disqus_shortname = "brawnbastion"
+  mainSections = ["post"]
+  
+  [[params.social]]
+    name = "Twitter"
+    link = "#"
+    icon = "fab fa-twitter"
+
+  [[params.social]]
+    name = "Github"
+    link = "#"
+    icon = "fab fa-github"
+
+  [[params.social]]
+    name = "Medium" 
+    link = "#"
+    icon = "fab fa-medium-m"
+
+  [[params.social]]
+    name = "LinkedIn"
+    link = "#"
+    icon = "fab fa-linkedin-in"
+
+  [[params.social]]
+    name = "RSS Feed"
+    link = "/index.xml"
+    icon = "fa-solid fa-rss"
+
+
+[menu]
+#  [[menu.main]]
+#    name = "Digital Garden"
+#    url = "/garden/"
+#    weight = 1
+  [[menu.main]]
+    name = "Home"
+    url = "/"
+    weight = 1
+  [[menu.main]]
+    name = "Work"
+    url = "/work/"
+    weight = 5
+  [[menu.main]]
+    name = "Patreon"
+    url = "/patreon/"
+    weight = 3
+  [[menu.main]]
+    name = "About"
+    url = "/about/"
+    weight = 4
+  [[menu.main]]
+    name = "Posts"
+    url = "/post/"
+    weight = 2
+
+
+[taxonomies]
+  garden_tags = 'garden_tags'
+  project_tags = 'project_tags'
+  library_tags = 'library_tags'
+
+
+[markup]
+  defaultMarkdownHandler = 'goldmark'
+  [markup.goldmark.renderer]
+    unsafe = true
+  [markup.goldmark.extensions]
+    definitionList = true
+    footnote = true
+    linkify = true
+    strikethrough = true
+    table = true
+    taskList = true
+    typographer = true
+  [markup.highlight]
+    # Choose from https://xyproto.github.io/splash/docs/all.html
+    style = 'monokailight'
+
+enableRobotsTXT = true
+
+[outputs]
+  home = ["HTML", "RSS"]

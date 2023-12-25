@@ -1,0 +1,14 @@
+{{ define "main" }}
+
+<div class="container" style="max-width: 800px;">
+    <div class="py-4 rounded-3">
+        <div class="container-fluid py-2">
+            <h1 class="display-2 mb-4 text-center mx-font">{{ .Title }}</h1>
+        </div>
+        <div class="serif main-content cascadia">
+            {{ .Content }}
+        </div>
+    </div>
+</div>
+
+{{ end }}
