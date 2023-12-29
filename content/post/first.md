@@ -4,18 +4,10 @@ rssPermalink: true
 comments: true
 ---
 
-# Heading
-## Subheading
+Thinking about time management to make game development more of a focus.
+Blogging 30 minutes first thing in the morning has helped.
+Maybe I'll try something similar but with game making.
 
-Starting off with a simple post.
+![Alt text](/images/green-area.png)
 
-[Link](https://www.google.com)
-
-Title | Date 
----   | ---  
-H1 | H2 
-H1 | H2 
-H1 | H2 
-H1 | H2 
-
-<img src="/images/green-area.png" style="width: 100% !important;">
+<!-- <img src="/images/green-area.png" style="width: 100% !important;"> -->
