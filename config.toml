@@ -6,7 +6,7 @@ copyright = "Byteden Games ©"
 
 [params]
   name = "Byteden Games"
-  author_avatar = "images/PandaProfileNoBG.png"
+  author_avatar = "/images/PandaProfileNoBG.png"
   description = "The Muscle Community"
   # links = "#Future links can be placed here"
   initials = "☺"
