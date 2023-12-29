@@ -2,6 +2,7 @@
 title: First post!
 rssPermalink: true
 comments: true
+
 ---
 
 Thinking about time management to make game development more of a focus.
