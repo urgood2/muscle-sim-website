@@ -2,6 +2,7 @@
 title: Second post
 rssPermalink: true
 comments: true
+date: {{ .Date }}
 
 ---
 
