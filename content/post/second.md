@@ -2,7 +2,7 @@
 title: Second post
 rssPermalink: true
 comments: true
-date: {{ .Date }}
+date: {{ now.Format "2006-01-02" }}
 
 ---
 
