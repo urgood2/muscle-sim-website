@@ -7,7 +7,7 @@ copyright = "Byteden Games ©"
 [params]
   name = "Byteden Games"
   author_avatar = "/images/PandaProfileNoBG.png"
-  description = "The Muscle Community"
+  description = "The Prototype Repository"
   # links = "#Future links can be placed here"
   initials = "☺"
   googleAnalytics = ""
@@ -53,11 +53,11 @@ copyright = "Byteden Games ©"
     name = "Work"
     url = "/work/"
     weight = 5
-  [[menu.main]]
-    name = "Patreon"
-    url = "/patreon/"
-    weight = 3
-  [[menu.main]]
+#  [[menu.main]]
+#    name = "Patreon"
+#    url = "/patreon/"
+#    weight = 3
+#  [[menu.main]]
     name = "About"
     url = "/about/"
     weight = 4
