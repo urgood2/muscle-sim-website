@@ -2,11 +2,11 @@
 layout: work
 Title: "Games"
 services: 
-    - "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut perspiciatis beatae, modi asperiores pariatur aspernatur veritatis officia, id commodi iure quo tempore. Cum."
+    - "Here you'll find some simple games. Try them out!"
 content:
     - image: "/images/green-area.png"
       pretitle: "lorem ipsum"
-      title: "Id commodi iure quo tempore"
+      title: "ASCII Horror Tower (WIP)"
       text: "Ut perspiciatis beatae, modi asperiores pariatur aspernatur veritatis officia, id commodi iure quo tem"
       buttons:
         - url: "/"
@@ -15,7 +15,7 @@ content:
 
     - image: "/images/green-area.png"
       pretitle: "lorem ipsum"
-      title: "Id commodi iure quo tempore"
+      title: "Simple Idler"
       text: "Ut perspiciatis beatae, modi asperiores pariatur aspernatur veritatis officia, id commodi iure quo tem"
       buttons:
         - url: "/"
@@ -26,7 +26,7 @@ content:
 
     - image: "/images/green-area.png"
       pretitle: "lorem ipsum"
-      title: "Id commodi iure quo tempore"
+      title: "ASCII Story Text Adventure"
       text: "Ut perspiciatis beatae, modi asperiores pariatur aspernatur veritatis officia, id commodi iure quo tem"
       buttons:
         - url: "/"
