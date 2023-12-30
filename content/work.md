@@ -1,6 +1,6 @@
 ---
 layout: work
-Title: "Work"
+Title: "Games"
 services: 
     - "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut perspiciatis beatae, modi asperiores pariatur aspernatur veritatis officia, id commodi iure quo tempore. Cum."
 content:

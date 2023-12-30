@@ -50,7 +50,7 @@ copyright = "Byteden Games ©"
     url = "/"
     weight = 1
   [[menu.main]]
-    name = "Work"
+    name = "Games"
     url = "/work/"
     weight = 5
   [[menu.main]]
