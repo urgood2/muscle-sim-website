@@ -14,25 +14,25 @@ copyright = "Byteden Games ©"
   disqus_shortname = "brawnbastion"
   mainSections = ["post"]
   
-  [[params.social]]
-    name = "Twitter"
-    link = "#"
-    icon = "fab fa-twitter"
+#  [[params.social]]
+#    name = "Twitter"
+#    link = "#"
+#    icon = "fab fa-twitter"
 
-  [[params.social]]
-    name = "Github"
-    link = "#"
-    icon = "fab fa-github"
+#  [[params.social]]
+#    name = "Github"
+#    link = "#"
+#    icon = "fab fa-github"
 
-  [[params.social]]
-    name = "Medium" 
-    link = "#"
-    icon = "fab fa-medium-m"
+#  [[params.social]]
+#    name = "Medium" 
+#    link = "#"
+#    icon = "fab fa-medium-m"
 
-  [[params.social]]
-    name = "LinkedIn"
-    link = "#"
-    icon = "fab fa-linkedin-in"
+#  [[params.social]]
+#    name = "LinkedIn"
+#    link = "#"
+#    icon = "fab fa-linkedin-in"
 
   [[params.social]]
     name = "RSS Feed"
@@ -53,10 +53,10 @@ copyright = "Byteden Games ©"
     name = "Work"
     url = "/work/"
     weight = 5
-#  [[menu.main]]
-#    name = "Patreon"
-#    url = "/patreon/"
-#    weight = 3
+  [[menu.main]]
+    name = "Patreon"
+    url = "/patreon/"
+    weight = 3
    [[menu.main]]
     name = "About"
     url = "/about/"
