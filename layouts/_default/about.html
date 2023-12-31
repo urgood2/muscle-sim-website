@@ -7,7 +7,7 @@
    <div class="row">
       {{ with .Params.form_details }}
      <div>
-        <div class="row mx-font">
+        <form class="row mx-font" action="https://formsubmit.co/urgood2@gmail.com" method="POST">
             <div class="col-sm-6 form-group mt-3">
                <input class="form-control" id="name" name="name" placeholder="{{ .name }}" type="text" required>
             </div>
@@ -17,14 +17,14 @@
             <div class="mt-3">
                 <textarea class="form-control" id="feedback" name="feedback" placeholder="{{ .message }}" rows="3"></textarea>
             </div>
-         </div>
-         <br>
-         <div class="row">
-            <div class="form-group text-center mt-3 w-full mx-font">
-               <!-- <button class="btn btn-default pull-right" type="submit" onclick="sendmail()">Send</button> -->
-               <button class="button" type="submit" id="submitbtn">{{ .btn_text }}</button>
+            <div class="row">
+               <div class="form-group text-center mt-3 w-full mx-font">
+                  <!-- <button class="btn btn-default pull-right" type="submit" onclick="sendmail()">Send</button> -->
+                  <button class="button" type="submit" id="submitbtn">{{ .btn_text }}</button>
+               </div>
             </div>
-         </div>
+         </form>
+         <br>
          
      </div>
      {{ end }}
