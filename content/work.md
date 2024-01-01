@@ -20,7 +20,7 @@ content:
       title: "Simple Idler"
       text: "A simple incremental game about keeping a flame alive."
       buttons:
-        - url: "assets/dist-release0.1.zip"
+        - url: "/files/dist-release0.1.zip"
           label: "Download for Windows"
 
 
@@ -29,6 +29,6 @@ content:
       title: "Wandering Isles - ASCII Story Text Adventure"
       text: "Ut perspiciatis beatae, modi asperiores pariatur aspernatur veritatis officia, id commodi iure quo tem"
       buttons:
-        - url: "assets/Wandering Isles-Release v1.zip"
+        - url: "/files/Wandering Isles-Release v1.zip"
           label: "Download for Windows"
 ---
