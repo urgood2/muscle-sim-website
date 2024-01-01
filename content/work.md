@@ -10,25 +10,25 @@ content:
       text: "Ut perspiciatis beatae, modi asperiores pariatur aspernatur veritatis officia, id commodi iure quo tem"
       buttons:
         - url: "/"
-          label: "Check Now"
+          label: "Download for Mac"
+        - url: "/"
+          label: "Download for Windows"
 
 
     - image: "/images/green-area.png"
       pretitle: "lorem ipsum"
       title: "Simple Idler"
-      text: "Ut perspiciatis beatae, modi asperiores pariatur aspernatur veritatis officia, id commodi iure quo tem"
+      text: "A simple incremental game about keeping a flame alive."
       buttons:
-        - url: "/"
-          label: "Check Now"
-        - url: "/"
-          label: "See Live"
+        - url: "assets/dist-release0.1.zip"
+          label: "Download for Windows"
 
 
     - image: "/images/green-area.png"
       pretitle: "lorem ipsum"
-      title: "ASCII Story Text Adventure"
+      title: "Wandering Isles - ASCII Story Text Adventure"
       text: "Ut perspiciatis beatae, modi asperiores pariatur aspernatur veritatis officia, id commodi iure quo tem"
       buttons:
-        - url: "/"
-          label: "Check Now"
+        - url: "assets/Wandering Isles-Release v1.zip"
+          label: "Download for Windows"
 ---
