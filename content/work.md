@@ -22,7 +22,7 @@ content:
           label: "Download for Windows"
 
 
-    - image: "/images/WanderingIsles.png"
+    - image: "/images/WanderingIsles.PNG"
       pretitle: "lorem ipsum"
       title: "Wandering Isles - ASCII Story Text Adventure"
       text: "A simple text-based adventure game with a twist."
