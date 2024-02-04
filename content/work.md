@@ -4,7 +4,7 @@ Title: "Games"
 services: 
     - "Here you'll find some simple games. Try them out!"
 content:
-    - image: "/images/asciiHorrorTowerMainImage"
+    - image: "/images/asciiHorrorTowerMainImage.png"
       pretitle: "lorem ipsum"
       title: "ASCII Horror Tower (WIP)"
       text: "Simple tower defense game with randomized item drop progression."
