@@ -14,10 +14,10 @@ copyright = "Byteden Games ©"
   disqus_shortname = "brawnbastion"
   mainSections = ["post"]
   
-#  [[params.social]]
-#    name = "Twitter"
-#    link = "#"
-#    icon = "fab fa-twitter"
+  [[params.social]]
+    name = "Twitter"
+    link = "https://twitter.com/byteden"
+    icon = "fab fa-twitter"
 
 #  [[params.social]]
 #    name = "Github"
