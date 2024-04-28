@@ -4,7 +4,7 @@ title: "Games"
 services: 
   - "Here you'll find some simple games. Try them out!"
 content:
-  - image: "/images/4b828613ea162cbcf4e4a9e540d5d5cf_MD5.jpeg.png"
+  - image: "/images/4b828613ea162cbcf4e4a9e540d5d5cf_MD5.jpeg"
     pretitle: "lorem ipsum"
     title: "Text-Based Combat Prototype"
     text: "Complicated text-based combat in a 2D grid."
