@@ -10,7 +10,7 @@ content:
     text: "Complicated text-based combat in a 2D grid."
     buttons:
       - url: "/files/combat_release_test.zip"
-        label: "Download from website"
+        label: "Download"
       - url: "https://yellowbeargames.itch.io/ascii-combat-sim"
         label: "Download from itch.io"
 
