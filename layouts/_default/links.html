@@ -1,19 +1,17 @@
 {{ define "main" }}
 
-<html>
-<head>
-    <title>{{ .Title }}</title>
-    {{ partial "head.html" . }}
-</head>
-<body>
-    {{ partial "header.html" . }}
-    <main>
-        <h1>{{ .Title }}</h1>
-        <div>
-            {{ .Content }}
-        </div>
-    </main>
-    {{ partial "footer.html" . }}
-</body>
+{{ define "main" }}
+<div class="container" style="max-width: 800px;">
+   <h2 class="text-center mx-font">{{ .Title }}</h2>
+   <div>
+      <p class="text-center fs-4 cascadia">{{ .Params.details }}</p>
+   </div>
+   <div class="main-content">
+      {{ .Content | safeHTML }}
+   </div>
+   
+ </div>
+{{ end }}
+
 
 {{ end }}
