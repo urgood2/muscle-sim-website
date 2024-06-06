@@ -1,7 +1,6 @@
 ---
 title: "Links"
 date: 2024-06-07
-layout: "links"
 ---
 
 Here are some social media links:
