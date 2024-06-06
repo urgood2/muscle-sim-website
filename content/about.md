@@ -1,9 +1,6 @@
 ---
 layout: about
 title: About Byteden
-details: "Sorry about the clutter. The site is a work in progress. You'll find ASCII-themed game prototypes here, made using C++ and raylib. Please note these are *very* prototype-y and sometimes incomplete, and reflect my obsession with ASCII-themed graphics (not very user-friendly, I know).
-
-If you have anything you'd like to talk about, feel free to use the form below!"
 form_details:
     name: "Full Name"
     email: "Your Email"
@@ -13,8 +10,7 @@ form_details:
 
 Sorry about the clutter. The site is a work in progress. You'll find ASCII-themed game prototypes here, made using C++ and raylib. Please note these are *very* prototype-y and sometimes incomplete, and reflect my obsession with ASCII-themed graphics (not very user-friendly, I know).
 
-If you have anything you'd like to talk about, feel free to use the form below!
+If you have anything you'd like to talk about, feel free to use the form below or visit the Discord!
 
-[Discord server](https://discord.gg/urpjVuPwjW)
+[Linke to Discord server](https://discord.gg/urpjVuPwjW)
 
-<a class="footer-social px-2 me-3 iscii" href="https://discord.gg/urpjVuPwjW">Discord</a>
