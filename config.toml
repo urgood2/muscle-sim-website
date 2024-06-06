@@ -65,6 +65,10 @@ copyright = "Byteden Games ©"
     name = "Posts"
     url = "/post/"
     weight = 2
+  [[menu.main]]
+    name = "Linkss"
+    url = "/links/"
+    weight = 6
 
 
 [taxonomies]

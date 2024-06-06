@@ -15,4 +15,6 @@ Sorry about the clutter. The site is a work in progress. You'll find ASCII-theme
 
 If you have anything you'd like to talk about, feel free to use the form below!
 
+[Discord server](https://discord.gg/urpjVuPwjW)
+
 <a class="footer-social px-2 me-3 iscii" href="https://discord.gg/urpjVuPwjW">Discord</a>
