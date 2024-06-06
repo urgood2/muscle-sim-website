@@ -54,7 +54,7 @@ copyright = "Byteden Games ©"
     url = "/work/"
     weight = 5
   [[menu.main]]
-    name = "Patreon"
+    name = "Ko-fi"
     url = "/patreon/"
     weight = 3
    [[menu.main]]

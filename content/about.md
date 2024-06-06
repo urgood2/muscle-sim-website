@@ -5,6 +5,11 @@ details: "Sorry about the clutter. The site is a work in progress. You'll find A
 
 If you have anything you'd like to talk about, feel free to use the form below!"
 image: "/images/green-area.png"
+
+<br>
+<br>
+
+There's also a <a href="https://discord.gg/urpjVuPwjW">Discord server</a> where you can submit feedback and/or ideas. 
 form_details:
     name: "Full Name"
     email: "Your Email"
