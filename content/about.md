@@ -12,5 +12,5 @@ Sorry about the clutter. The site is a work in progress. You'll find ASCII-theme
 
 If you have anything you'd like to talk about, feel free to use the form below or visit the Discord!
 
-[Linke to Discord server](https://discord.gg/urpjVuPwjW)
+[Link to Discord server](https://discord.gg/urpjVuPwjW)
 
