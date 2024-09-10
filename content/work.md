@@ -4,14 +4,15 @@ title: "Games"
 services: 
   - "Here you'll find some simple games. Try them out!"
 content:
-- image: "/images/Screenshot2024-09-11082913.png"
+
+  - image: "/images/Screenshot2024-09-11082913.png"
     pretitle: "lorem ipsum"
     title: "Shady Alchemation"
     text: "An attempt at an automation/factory game. Made for Pirate Game Jam 15."
     buttons:
       - url: "https://tommyv2.itch.io/shady-alchemy"
         label: "Play on itch.io"
-- image: "/images/Screenshot2024-09-11082851.png"
+  - image: "/images/Screenshot2024-09-11082851.png"
     pretitle: "lorem ipsum"
     title: "Autorock Roulette"
     text: "An autobattler based on rock paper scissors. Made for Mini Jame Gam #31."
