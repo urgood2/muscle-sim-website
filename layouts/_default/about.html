@@ -1,8 +1,11 @@
 {{ define "main" }}
 <div class="container" style="max-width: 800px;">
    <h2 class="text-center mx-font">{{ .Title }}</h2>
-   <div class="">
-      <p class="text-center fs-4 cascadia">{{ .Params.details }}</p>  
+   <div>
+      <p class="text-center fs-4 cascadia">{{ .Params.details }}</p>
+   </div>
+   <div class="text-center fs-4 cascadia">
+      {{ .Content | safeHTML }}
    </div>
    <div class="row">
       {{ with .Params.form_details }}
@@ -19,13 +22,11 @@
             </div>
             <div class="row">
                <div class="form-group text-center mt-3 w-full mx-font">
-                  <!-- <button class="btn btn-default pull-right" type="submit" onclick="sendmail()">Send</button> -->
                   <button class="button" type="submit" id="submitbtn">{{ .btn_text }}</button>
                </div>
             </div>
          </form>
          <br>
-         
      </div>
      {{ end }}
    </div>

@@ -6,7 +6,7 @@ copyright = "Byteden Games ©"
 
 [params]
   name = "Byteden Games"
-  author_avatar = "/images/PandaProfileNoBG.png"
+  author_avatar = "/images/mastodon_profile.gif"
   description = "The Prototype Repository"
   # links = "#Future links can be placed here"
   initials = "☺"
@@ -14,10 +14,10 @@ copyright = "Byteden Games ©"
   disqus_shortname = "brawnbastion"
   mainSections = ["post"]
   
-#  [[params.social]]
-#    name = "Twitter"
-#    link = "#"
-#    icon = "fab fa-twitter"
+  [[params.social]]
+    name = "Twitter"
+    link = "https://twitter.com/byteden"
+    icon = "fab fa-twitter"
 
 #  [[params.social]]
 #    name = "Github"
@@ -54,7 +54,7 @@ copyright = "Byteden Games ©"
     url = "/work/"
     weight = 5
   [[menu.main]]
-    name = "Patreon"
+    name = "Ko-fi"
     url = "/patreon/"
     weight = 3
    [[menu.main]]
@@ -65,6 +65,10 @@ copyright = "Byteden Games ©"
     name = "Posts"
     url = "/post/"
     weight = 2
+  [[menu.main]]
+    name = "Links"
+    url = "/links/"
+    weight = 6
 
 
 [taxonomies]
