@@ -1,0 +1,7 @@
+Making new posts
+
+
+On mac:
+run ./hugo-new.sh TEXT_TITLE
+
+result: Content "/Users/joshuashin/Documents/GitHub/muscle-sim-website/content/posts/Sep-16-2024-TEXT_TITLE.md" created
