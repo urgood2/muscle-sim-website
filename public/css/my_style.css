@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Fascinate+Inline&display=swap');
 
 .portfolio-feature:nth-child(odd) {
-    @media (min-width: 1200px) {
+    @media (min-width: 100%) {
       flex-direction: row-reverse;
     }
   }
