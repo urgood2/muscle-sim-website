@@ -28,6 +28,16 @@ body {
   background-color: var(--white);
 }
 
+.container, .content {
+    width: 100%;
+    padding: 0 15px; /* Adds padding for small screens to prevent content touching screen edges */
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
 #content {
   position: relative;
   min-height: 95vh;
@@ -38,9 +48,13 @@ body, html {
     width: 100%;
 }
 
+* {
+    box-sizing: border-box;
+}
+
 img, .container, .content {
-    max-width: 100%;
-    width: auto;
+    width: 100%;
+    height: auto;
 }
 
 a {
