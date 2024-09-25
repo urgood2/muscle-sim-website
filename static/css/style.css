@@ -33,6 +33,11 @@ body {
   min-height: 95vh;
 }
 
+body, html {
+    overflow-x: hidden;
+    width: 100%;
+}
+
 a {
   text-decoration: underline var(--grey);
   color: var(--dark);
