@@ -38,6 +38,11 @@ body, html {
     width: 100%;
 }
 
+img, .container, .content {
+    max-width: 100%;
+    width: auto;
+}
+
 a {
   text-decoration: underline var(--grey);
   color: var(--dark);
