@@ -141,10 +141,6 @@ blockquote {
   border-left-color: lightgray;
   border-left-style: solid;
 }
-code {
-  color: var(--grey);
-  font-size: smaller;
-}
 .btn-link {
   text-decoration: none;
   border-bottom-width: 1px;
