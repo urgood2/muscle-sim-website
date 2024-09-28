@@ -141,9 +141,24 @@ blockquote {
   border-left-color: lightgray;
   border-left-style: solid;
 }
+pre code {
+    font-family: 'Cascadia Code', monospace !important;
+    font-size: 13px; /* Adjust as needed */
+    background-color: #f9f9f9; /* Light background for code blocks */
+    color: #272822; /* Dark text color */
+    padding: 10px;
+    border-radius: 4px;
+    overflow-x: auto;
+    line-height: 1.5;
+}
+
 code {
-  color: var(--grey);
-  font-size: smaller;
+    font-family: 'Cascadia Code', monospace;
+    font-size: 13px; /* Adjust for inline code */
+    background-color: #f4f4f4; /* Different background for inline code */
+    color: #272822;
+    padding: 2px 4px;
+    border-radius: 4px;
 }
 .btn-link {
   text-decoration: none;
