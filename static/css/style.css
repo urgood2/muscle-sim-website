@@ -14,7 +14,7 @@
 
 /********************* General *********************/
 
-body *:not(p) {
+body *:not(p):not(pre):not(code) {
   font-family: var(--summary);
   font-weight: 300;
   color: var(--dark);
@@ -132,7 +132,9 @@ table td{
     margin: 20px;
   }
 } 
-
+pre, code {
+    font-family: 'Cascadia Code', monospace !important;
+}
 blockquote {
   font-family: var(--summary);
   padding: 10px 10px 1px 30px;
