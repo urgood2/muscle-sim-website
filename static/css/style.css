@@ -141,33 +141,10 @@ blockquote {
   border-left-color: lightgray;
   border-left-style: solid;
 }
-/* Entire code block container */
-pre {
-    background-color: #f4f4f4;  /* Light background color */
-    border: 1px solid #ddd;     /* Border around the block */
-    border-radius: 8px;         /* Rounded corners for a box effect */
-    padding: 15px;              /* Padding inside */
-    overflow-x: auto;           /* Horizontal scrolling for long lines */
-    margin-bottom: 20px;        /* Space between code blocks */
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);  /* Subtle shadow for depth */
-}
-
-/* Code within the block */
-pre code {
-    font-family: 'Cascadia Code', monospace;
-    font-size: 14px;
-    color: #333;
-    line-height: 1.6;
-}
-
-/* Styling for inline code snippets */
 code {
-    background-color: #f4f4f4;
-    padding: 2px 5px;
-    border-radius: 4px;
-    color: #d6336c;  /* Custom color for inline code */
+  color: var(--grey);
+  font-size: smaller;
 }
-
 .btn-link {
   text-decoration: none;
   border-bottom-width: 1px;
