@@ -42,7 +42,7 @@
 }
 
 pre code {
-    font-family: 'Cascadia Code', monospace;
+    font-family: 'Cascadia Code', monospace !important;
     font-size: 13px; /* Adjust as needed */
     background-color: #f9f9f9; /* Light background for code blocks */
     color: #272822; /* Dark text color */
