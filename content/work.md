@@ -8,7 +8,7 @@ content:
   - image: "/images/FG85BP.png"
     pretitle: "lorem ipsum"
     title: "Echo of the Void: Homesong"   # fetched from the Jame Gam #50 entry :contentReference[oaicite:2]{index=2}
-    text: ""
+    text: "Another incremental game which involves a singing space whale."
     buttons:
       - url: "https://chugget.itch.io/jame-gam-50"
         label: "Play on itch.io"
@@ -16,7 +16,7 @@ content:
   - image: "/images/vjEBAB.png"
     pretitle: "lorem ipsum"
     title: "Candy Incremental"            # fetched from the Christmas Edition entry :contentReference[oaicite:1]{index=1}
-    text: ""
+    text: "An attempt at an incremental game with elves mining coal."
     buttons:
       - url: "https://chugget.itch.io/testing-jame-gam-christmas-2024"
         label: "Play on itch.io"
@@ -24,7 +24,7 @@ content:
   - image: "/images/bXLsKa.png"
     pretitle: "lorem ipsum"
     title: "Creature Observation Duty"   # fetched from the Jame Gam #44 entry :contentReference[oaicite:0]{index=0}
-    text: ""
+    text: "A little attempt at hide-and-seek mechanics fused with roguelike event triggers."
     buttons:
       - url: "https://chugget.itch.io/jame-gam-44-entry"
         label: "Play on itch.io"
