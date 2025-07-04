@@ -5,6 +5,30 @@ services:
   - "Here you'll find some simple games. Try them out!"
 content:
 
+  - image: "/images/FG85BP.png"
+    pretitle: "lorem ipsum"
+    title: "Echo of the Void: Homesong"   # fetched from the Jame Gam #50 entry :contentReference[oaicite:2]{index=2}
+    text: ""
+    buttons:
+      - url: "https://chugget.itch.io/jame-gam-50"
+        label: "Play on itch.io"
+
+  - image: "/images/vjEBAB.png"
+    pretitle: "lorem ipsum"
+    title: "Candy Incremental"            # fetched from the Christmas Edition entry :contentReference[oaicite:1]{index=1}
+    text: ""
+    buttons:
+      - url: "https://chugget.itch.io/testing-jame-gam-christmas-2024"
+        label: "Play on itch.io"
+        
+  - image: "/images/bXLsKa.png"
+    pretitle: "lorem ipsum"
+    title: "Creature Observation Duty"   # fetched from the Jame Gam #44 entry :contentReference[oaicite:0]{index=0}
+    text: ""
+    buttons:
+      - url: "https://chugget.itch.io/jame-gam-44-entry"
+        label: "Play on itch.io"
+
   - image: "/images/Screenshot2024-09-11082913.png"
     pretitle: "lorem ipsum"
     title: "Shady Alchemation"
