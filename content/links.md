@@ -8,5 +8,5 @@ Here are some social media links:
 
 - [Twitter](https://twitter.com/byteden)  
 - [RSS Feed](/index.xml)
-- [Discord](https://discord.gg/urpjVuPwjW)
+- [Discord](https://discord.gg/rp6yXxKu5z)
 
