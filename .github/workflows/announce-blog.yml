@@ -13,23 +13,40 @@ jobs:
       BASE_URL: ${{ secrets.BASE_URL || 'https://byteden.games' }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # <-- IMPORTANT: needed for git diff against BEFORE
 
       - name: Find newly added posts in this push
         id: files
         run: |
           set -euo pipefail
-          # List added files (status A) under content/**.md for this push.
           BEFORE="${{ github.event.before }}"
           AFTER="${{ github.sha }}"
-          # Fall back for force-push or initial commit
-          if [ "$BEFORE" = "0000000000000000000000000000000000000000" ]; then
-            git diff --name-only --diff-filter=A "$AFTER~1" "$AFTER" | grep -E '^content/.*\.md$' || true
+      
+          # If BEFORE is the all-zero hash or missing in local history, fetch it (in case of shallow clone on old runs)
+          if [ "$BEFORE" != "0000000000000000000000000000000000000000" ]; then
+            git cat-file -e "$BEFORE^{commit}" 2>/dev/null || git fetch --no-tags --depth=1 origin "$BEFORE" || true
+          fi
+      
+          # Choose a safe base for diff:
+          # - if BEFORE is valid: use merge-base(BEFORE, AFTER) to survive rebases/force-pushes
+          # - else (initial commit): fall back to AFTER^ if it exists, else empty tree
+          if git cat-file -e "$BEFORE^{commit}" 2>/dev/null; then
+            BASE="$(git merge-base "$BEFORE" "$AFTER")"
           else
-            git diff --name-only --diff-filter=A "$BEFORE" "$AFTER" | grep -E '^content/.*\.md$' || true
-          fi > added.txt
-          echo "added=$(paste -sd',' added.txt)" >> $GITHUB_OUTPUT
-          echo "Added files:"
-          cat added.txt || true
+            if git rev-parse "$AFTER^" >/dev/null 2>&1; then
+              BASE="$(git rev-parse "$AFTER^")"
+            else
+              BASE="$(git hash-object -t tree /dev/null)"   # empty tree for very first commit
+            fi
+          fi
+      
+          # List files Added (A) under content/**.md between BASE..AFTER
+          git diff --name-status "$BASE" "$AFTER" \
+            | awk '$1=="A" && $2 ~ /^content\/.*\.md$/ {print $2}' > added.txt || true
+      
+          echo "added=$(paste -sd',' added.txt)" >> "$GITHUB_OUTPUT"
+          echo "Added files:"; cat added.txt || true
 
       - name: Announce each new post
         if: steps.files.outputs.added != ''
