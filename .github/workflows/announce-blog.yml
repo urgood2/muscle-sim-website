@@ -56,21 +56,19 @@ jobs:
         run: |
           set -euo pipefail
           python3 - << 'PY'
-          import os, re, sys, json, datetime, pathlib, subprocess, urllib.error
-          
+          import os, re, sys, json, datetime, pathlib, urllib.error, urllib.request
+
           webhook = os.environ["DISCORD_WEBHOOK"]
           base = os.environ.get("BASE_URL","").rstrip("/")
-          # Minimal sanity check to catch empty/garbled secrets early
           if not webhook or "discord.com/api/webhooks/" not in webhook:
-            print("[fatal] DISCORD_WEBHOOK is missing or not a discord.com webhook URL.")
-            sys.exit(1)
-          added = os.getenv("ADDED_LIST")  # not used
-          # Read the list produced earlier
+              print("[fatal] DISCORD_WEBHOOK is missing or not a discord.com webhook URL.")
+              sys.exit(1)
+
           with open("added.txt","r") as f:
               files = [line.strip() for line in f if line.strip()]
-          
+
           def parse_front_matter(text):
-              # Supports YAML (---) and TOML (+++)
+              # YAML (---) or TOML (+++)
               if text.startswith('---'):
                   m = re.match(r'^---\s*\n(.*?)\n---\s*\n(.*)$', text, re.S)
                   fmt = 'yaml'
@@ -82,57 +80,39 @@ jobs:
               if not m:
                   return {}, text
               meta_raw, body = m.group(1), m.group(2)
-              data = {}
               try:
                   if fmt == 'yaml':
-                      import yaml  # PyYAML is available on ubuntu-latest
-                      data = yaml.safe_load(meta_raw) or {}
+                      import yaml
+                      meta = yaml.safe_load(meta_raw) or {}
                   else:
-                      import tomllib  # Python 3.11
-                      data = tomllib.loads(meta_raw)
+                      import tomllib
+                      meta = tomllib.loads(meta_raw)
               except Exception:
-                  data = {}
-              return data, body
-          
+                  meta = {}
+              return meta, body
+
+          def markdown_to_discord_text(md: str) -> str:
+              # Remove code fences but preserve code inline-ish
+              md = re.sub(r'```.*?```', lambda m: '\n\n' + re.sub(r'[\r\n]+', ' ', m.group(0)[3:-3]).strip() + '\n\n', md, flags=re.S)
+              # Images: drop
+              md = re.sub(r'!\[[^\]]*\]\([^)]+\)', '', md)
+              # Links: [text](url) -> text (url)
+              md = re.sub(r'\[([^\]]+)\]\(([^)]+)\)', r'\1 (\2)', md)
+              # Headings: strip hashes
+              md = re.sub(r'^(#{1,6})\s*', '', md, flags=re.M)
+              # Excess whitespace
+              md = re.sub(r'\r', '', md)
+              md = re.sub(r'\n{3,}', '\n\n', md)
+              md = re.sub(r'[ \t]+', ' ', md)
+              return md.strip()
+
           def first_image_from_body(body):
-              # Markdown image ![alt](url) or plain http image link
               m = re.search(r'!\[[^\]]*\]\(([^)]+)\)', body)
               if m: return m.group(1)
               m = re.search(r'(https?://\S+\.(?:png|jpg|jpeg|gif|webp))', body, re.I)
               return m.group(1) if m else None
-          
-          def summarize(body, limit=300):
-              # strip code fences and markdown links
-              b = re.sub(r'```.*?```', '', body, flags=re.S)
-              b = re.sub(r'\[([^\]]+)\]\([^)]+\)', r'\1', b)
-              b = re.sub(r'!\[[^\]]*\]\([^)]+\)', '', b)
-              b = re.sub(r'\s+', ' ', b).strip()
-              return (b[:limit] + '…') if len(b) > limit else b
-          
-          def build_url(fp, meta):
-              # Priority: meta.url > (section + slug) > path derived
-              if 'url' in meta and meta['url']:
-                  u = str(meta['url'])
-                  if u.startswith('http'): return u
-                  return f"{base}/{u.lstrip('/')}"
-              # derive from path
-              p = pathlib.Path(fp)
-              # Remove leading content/
-              parts = p.parts
-              if parts[0] == 'content':
-                  parts = parts[1:]
-              # remove extension
-              if parts[-1].endswith('.md'):
-                  parts = parts[:-1] + (parts[-1][:-3],)
-              # If front matter provides slug, replace last segment
-              slug = (meta.get('slug') or meta.get('permalink') or '').strip() if meta else ''
-              if slug:
-                  parts = (*parts[:-1], slug)
-              # Join; Hugo typically adds trailing slash
-              return f"{base}/{'/'.join(parts).strip('/')}/"
-          
+
           def parse_date(meta):
-              # Accept date/publishDate as ISO or yyyy-mm-dd
               for k in ("publishDate","date"):
                   v = meta.get(k)
                   if not v: continue
@@ -141,97 +121,89 @@ jobs:
                   except Exception:
                       pass
               return None
-          
+
           def is_draft(meta):
               d = meta.get('draft')
               return bool(d) if d is not None else False
-          
+
           def should_skip(meta):
-              # Skip drafts and future-dated posts
               if is_draft(meta): return True, "draft=true"
               dt = parse_date(meta)
               if dt and dt > datetime.datetime.now(datetime.timezone.utc):
                   return True, f"future date {dt.isoformat()}"
               return False, ""
-          
-          import urllib.request, time
+
+          def chunk(s, n):
+              for i in range(0, len(s), n):
+                  yield s[i:i+n]
+
           def post_discord(payload):
               req = urllib.request.Request(webhook, method="POST")
               req.add_header("Content-Type","application/json")
-              # Set a UA; some Discord edges are stricter for non-browser clients
               req.add_header("User-Agent", "BytedenBlogBot/1.0 (+github-actions)")
               data = json.dumps(payload).encode("utf-8")
               try:
                   with urllib.request.urlopen(req, data=data) as resp:
-                      # Discord webhooks return 204 No Content on success
-                      status = resp.status
-                      if status not in (200, 201, 202, 204):
-                          print(f"[warn] Discord returned HTTP {status}")
+                      if resp.status not in (200,201,202,204):
+                          print(f"[warn] Discord returned HTTP {resp.status}")
               except urllib.error.HTTPError as e:
                   body = e.read().decode("utf-8", errors="replace")
                   print(f"[http-error] {e.code} from Discord. Response body:\n{body}")
-                  # Surface structured API error (e.g., {"message":"Missing Access","code":50001})
                   try:
                       j = json.loads(body)
                       print(f"[discord] code={j.get('code')} message={j.get('message')}")
                   except Exception:
                       pass
                   raise
-          
+
           errors = []
+          homepage = base + "/" if base else "/"
+
           for fp in files:
               try:
-                  with open(fp, "r", encoding="utf-8") as f:
-                      txt = f.read()
+                  txt = pathlib.Path(fp).read_text(encoding="utf-8")
                   meta, body = parse_front_matter(txt)
                   skip, reason = should_skip(meta)
                   if skip:
                       print(f"[skip] {fp}: {reason}")
                       continue
-          
-                  title = (meta.get('title') or '').strip()
-                  if not title:
-                      # fallback to filename
-                      title = pathlib.Path(fp).stem
-          
-                  url = build_url(fp, meta)
+
+                  title = (meta.get('title') or pathlib.Path(fp).stem).strip()
                   img = meta.get('image') or meta.get('featuredImage') or first_image_from_body(body)
-                  desc = (meta.get('summary') or meta.get('description') or summarize(body))
-          
-                  tags = meta.get('tags') or meta.get('categories') or []
-                  if isinstance(tags, str): tags = [tags]
-          
-                  embed = {
-                      "title": title,
-                      "url": url,
-                      "description": desc[:1000],  # Discord embed description limit ~4096; keep it tight
-                  }
-                  if img:
-                      embed["image"] = {"url": img}
-          
-                  if tags:
-                      # Add a small field for tags
-                      embed.setdefault("fields", []).append({
-                          "name": "Tags",
-                          "value": ", ".join(str(t) for t in tags)[:1000],
-                          "inline": True
-                      })
-          
+
+                  # Convert full body to Discord-safe text and include it
+                  full = markdown_to_discord_text(body)
+
+                  # Build embeds: first carries title/link/image; subsequent carry continuation chunks
+                  parts = list(chunk(full, 3000))[:3]  # stay under 4096/description, leave headroom
+                  embeds = []
+                  for i, part in enumerate(parts):
+                      e = {
+                          "title": title if i == 0 else f"{title} (cont. {i+1})",
+                          "url": homepage,            # <-- link to HOME
+                          "description": part,
+                      }
+                      if i == 0 and img:
+                          e["image"] = {"url": img}
+                      embeds.append(e)
+
+                  # Also put a simple content line with the homepage link
                   payload = {
                       "username": "Blog Bot",
-                      "embeds": [embed]
+                      "content": f"**{title}** → {homepage}",
+                      "embeds": embeds
                   }
-          
+
                   post_discord(payload)
-                  print(f"[ok] Announced: {title} -> {url}")
+                  print(f"[ok] Announced: {title} -> {homepage}")
               except Exception as e:
                   print(f"[err] {fp}: {e}")
                   errors.append((fp, str(e)))
-          
+
           if errors:
               sys.exit(1)
           PY
-          
-                - name: No new posts detected (info)
-                  if: steps.files.outputs.added == ''
-                  run: echo "No newly added posts in this push; nothing to announce."
+
+      - name: No new posts detected (info)
+        if: steps.files.outputs.added == ''
+        run: echo "No newly added posts in this push; nothing to announce."
