@@ -56,10 +56,14 @@ jobs:
         run: |
           set -euo pipefail
           python3 - << 'PY'
-          import os, re, sys, json, datetime, pathlib, subprocess
+          import os, re, sys, json, datetime, pathlib, subprocess, urllib.error
           
           webhook = os.environ["DISCORD_WEBHOOK"]
           base = os.environ.get("BASE_URL","").rstrip("/")
+          # Minimal sanity check to catch empty/garbled secrets early
+          if not webhook or "discord.com/api/webhooks/" not in webhook:
+            print("[fatal] DISCORD_WEBHOOK is missing or not a discord.com webhook URL.")
+            sys.exit(1)
           added = os.getenv("ADDED_LIST")  # not used
           # Read the list produced earlier
           with open("added.txt","r") as f:
@@ -150,13 +154,29 @@ jobs:
                   return True, f"future date {dt.isoformat()}"
               return False, ""
           
-          import urllib.request
+          import urllib.request, time
           def post_discord(payload):
               req = urllib.request.Request(webhook, method="POST")
               req.add_header("Content-Type","application/json")
+              # Set a UA; some Discord edges are stricter for non-browser clients
+              req.add_header("User-Agent", "BytedenBlogBot/1.0 (+github-actions)")
               data = json.dumps(payload).encode("utf-8")
-              with urllib.request.urlopen(req, data=data) as resp:
-                  resp.read()
+              try:
+                  with urllib.request.urlopen(req, data=data) as resp:
+                      # Discord webhooks return 204 No Content on success
+                      status = resp.status
+                      if status not in (200, 201, 202, 204):
+                          print(f"[warn] Discord returned HTTP {status}")
+              except urllib.error.HTTPError as e:
+                  body = e.read().decode("utf-8", errors="replace")
+                  print(f"[http-error] {e.code} from Discord. Response body:\n{body}")
+                  # Surface structured API error (e.g., {"message":"Missing Access","code":50001})
+                  try:
+                      j = json.loads(body)
+                      print(f"[discord] code={j.get('code')} message={j.get('message')}")
+                  except Exception:
+                      pass
+                  raise
           
           errors = []
           for fp in files:
