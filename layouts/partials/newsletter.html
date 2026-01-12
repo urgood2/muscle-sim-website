@@ -1,0 +1,38 @@
+<div class="newsletter-terminal">
+  <div class="newsletter-terminal__header">BYTEDEN_GAMES://JOIN_DEVLOG</div>
+
+  <form class="newsletter-terminal__form"
+        action="https://buttondown.email/api/emails/embed-subscribe/{{ .Site.Params.buttondown_username | default "byteden" }}"
+        method="post"
+        target="popupwindow"
+        onsubmit="window.open('https://buttondown.email/{{ .Site.Params.buttondown_username | default "byteden" }}', 'popupwindow')">
+    
+    <label class="newsletter-terminal__prompt" for="newsletter-email">&gt; EMAIL</label>
+
+    <input id="newsletter-email"
+           class="newsletter-terminal__input"
+           type="email"
+           name="email"
+           placeholder="you@example.com"
+           required
+           autocomplete="email"
+           inputmode="email" />
+
+    <button type="submit" class="newsletter-terminal__btn">[SUBSCRIBE]</button>
+
+    <div class="newsletter-terminal__consent">
+      <input id="newsletter-consent" type="checkbox" required>
+      <label for="newsletter-consent">
+        I agree to receive devlog emails and accept the
+        <a href="/privacy/">privacy policy</a>.
+      </label>
+    </div>
+
+    <input type="hidden" name="embed" value="1">
+    <input type="hidden" name="tag" value="{{ .Section | default "homepage" }}">
+  </form>
+
+  <div class="newsletter-terminal__fineprint">
+    New posts, demos &amp; release notes. No spam. Unsubscribe anytime.
+  </div>
+</div>

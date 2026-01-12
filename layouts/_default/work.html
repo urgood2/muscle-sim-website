@@ -1,38 +1,37 @@
 {{ define "main" }}
-<section class="container" style="max-width: 800px;">
-  <div class="container">
-    <div class="row justify-content-center pb-5">
-      <div class="col-12 col-xl-6">
-        {{ with .Params.title }}
-        <h3 class="display-2 mb-4 text-center mx-font">{{ . }}</h3>
-        {{ end }}
-        {{ range .Params.services }}
-            <p class="text-center fs-4 cascadia">{{ . }}</p>
-        {{ end }}
-      </div>
-    </div>
+<section class="container" style="max-width: 1000px;">
+  <div class="py-5">
+    <h3 class="display-2 mb-5 text-center mx-font">> PROJECT_DATABASE</h3>
+    
+    <div class="row">
     {{ range .Params.content }}
-    <div class="row portfolio-feature pb-5">
-      <div class="col-12 col-xl-6 d-flex flex-column justify-content-center">
-        {{ with .image }}
-          <img src="{{ . }}" alt="image">
-        {{ end }}
-      </div>
-      <div class="col-12 col-xl-6 d-flex flex-column justify-content-center">
-        {{ with .title }}
-        <h3 class="display-6 mb-4 mx-font">{{ . }}</h3>
-        {{ end }}
-        {{ with .text }}
-        <p class="text-black-61 pb-3 cascadia">{{ . }}</p>
-        {{ end }}
-        <div class="button-container">
-          {{ range .buttons }}
-          <a class="btn btn-primary mb-2 mx-font" href="{{ .url }}">{{ .label }}</a>
+      <div class="col-md-6 col-lg-4 mb-4">
+        <div class="game-card">
+          {{ with .image }}
+          <img src="{{ . }}" alt="Game Screenshot" class="img-fluid">
           {{ end }}
+          
+          <div class="game-card-body flex-grow-1">
+            {{ with .title }}
+            <h3 class="mx-font mb-3">{{ . | upper }}</h3>
+            {{ end }}
+            
+            {{ with .text }}
+            <p class="cascadia mb-4">{{ . }}</p>
+            {{ end }}
+          </div>
+          
+          <div class="game-card-footer mt-auto pt-3">
+            {{ range .buttons }}
+            <a class="retro-btn w-100 text-center" href="{{ .url }}">
+              [ {{ .label | upper }} ]
+            </a>
+            {{ end }}
+          </div>
         </div>
       </div>
-    </div>
     {{ end }}
+    </div>
   </div>
 </section>
 {{ end }}

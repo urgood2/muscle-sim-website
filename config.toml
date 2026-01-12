@@ -8,11 +8,11 @@ copyright = "Byteden Games ©"
   name = "Byteden Games"
   author_avatar = "/images/mastodon_profile.gif"
   description = "The Prototype Repository"
-  # links = "#Future links can be placed here"
   initials = "☺"
   googleAnalytics = ""
   disqus_shortname = "brawnbastion"
   mainSections = ["post"]
+  buttondown_username = "byteden"
   
   [[params.social]]
     name = "Twitter"

@@ -1,24 +1,39 @@
 {{ define "main" }}
 
 <div class="container" style="max-width: 800px;">
-    <div class="py-5 rounded-3">
-        <div class="container-fluid py-2">
-            <h1 class="display-2 mb-4">{{ .Title }}</h1>
+    <div class="py-5">
+        <div class="container-fluid py-2 mb-5">
+            <h1 class="display-2 mb-4 mx-font">> DEV_LOGS</h1>
             <p class="bio col-md-8 fs-4 serif">{{ .Summary }}</p>
         </div>
-    </div>
-</div>
 
-<div class="container" style="max-width: 800px;">
-    {{ range .Pages.ByPublishDate.Reverse }}
-    <p>
-        <h3><a class="title" href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
-        {{ partial "metadata.html" . }}
-        <a class="summary" href="{{ .RelPermalink }}">
-            <!-- <p>{{ .Summary }}</p> -->
-        </a>
-    </p>
-    {{ end }}
+        <div class="posts-list">
+            {{ range .Pages.ByPublishDate.Reverse }}
+            <div class="post-card">
+                <div class="row align-items-center">
+                    <div class="col-md-9">
+                        <span class="post-meta">
+                            > LOG_DATE: {{ .Date.Format "2006-01-02" }}
+                        </span>
+                        <h3 class="mx-font mt-2 mb-3">
+                            <a href="{{ .RelPermalink }}" class="text-decoration-none text-dark">
+                                {{ .Title }}
+                            </a>
+                        </h3>
+                        <div class="cascadia text-secondary">
+                            {{ .Summary | truncate 150 }}
+                        </div>
+                    </div>
+                    <div class="col-md-3 text-end mt-3 mt-md-0">
+                        <a href="{{ .RelPermalink }}" class="retro-btn text-center d-block d-md-inline-block">
+                            [ READ ]
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {{ end }}
+        </div>
+    </div>
 </div>
 
 {{ end }}
