@@ -1,10 +1,16 @@
 .hugo_build.lock
-content/posts/.DS_Store
-content/.DS_Store
 .DS_Store
-.DS_Store
-content/.DS_Store
-content/posts/.DS_Store
-.DS_Store
-.DS_Store
-content/.DS_Store
+*/.DS_Store
+**/.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.env
+
+# Admin panel
+admin/__pycache__/
+
+# Hugo build output (regenerated on deploy)
+public/

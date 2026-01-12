@@ -1,0 +1,8 @@
+{{- $src := .Get "src" | default (.Get 0) -}}
+{{- $alt := .Get "alt" | default "" -}}
+{{- $class := .Get "class" | default "post-video" -}}
+{{- $controls := .Get "controls" | default false -}}
+<video autoplay loop muted playsinline {{ if $controls }}controls{{ end }} class="{{ $class }}" style="max-width: 100%; height: auto;" {{ with $alt }}title="{{ . }}" aria-label="{{ . }}"{{ end }}>
+  <source src="{{ "/images/" | relURL }}{{ $src }}" type="video/mp4">
+  {{ if $alt }}{{ $alt }}{{ else }}Your browser does not support the video tag.{{ end }}
+</video>

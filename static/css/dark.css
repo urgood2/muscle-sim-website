@@ -1,16 +1,77 @@
-html {
-    background-color: #171717 !important;
+:root {
+    --bg-primary: #0a0a0a;
+    --bg-secondary: #111111;
+    --text-primary: #00ff00;
+    --text-secondary: #00cc00;
+    --accent: #00ffff;
+    
+    --dark: #00ff00;
+    --grey: #00cc00;
+    --white: #0a0a0a;
+    --offwhite: #000000;
+    --blue: #00ffff;
+    --lighter-blue: #003333;
+    --red: #ff0055;
+    --yellow: #ffff00;
 }
+
 html {
-    filter: invert(100%) hue-rotate(180deg) brightness(105%) contrast(85%);
-    -webkit-filter: invert(100%) hue-rotate(180deg) brightness(105%) contrast(85%);
+    background-color: var(--bg-primary) !important;
+    filter: none;
+    -webkit-filter: none;
 }
+
 body {
-    background-color: #FFF !important;
+    background-color: var(--bg-primary) !important;
+    color: var(--text-primary);
 }
+
 img,
 video,
 body * [style*="background-image"] {
-    filter: hue-rotate(180deg) contrast(100%) invert(100%);
-    -webkit-filter: hue-rotate(180deg) contrast(100%) invert(100%);
+    filter: none;
+    -webkit-filter: none;
+}
+
+a {
+    color: var(--accent);
+    text-decoration-color: var(--accent);
+}
+
+.navbar {
+    background: var(--bg-primary) !important;
+    color: var(--text-primary);
+    border-bottom: 2px solid var(--dark);
+}
+
+.footer-social a, .footer-social i {
+    color: var(--text-primary);
+}
+.footer-social a:hover, .footer-social i:hover {
+    color: var(--accent);
+}
+
+.card {
+    background-color: var(--offwhite);
+    border-color: var(--dark);
+    box-shadow: 4px 4px 0 var(--dark);
+}
+
+.card:hover {
+    box-shadow: 8px 8px 0 var(--dark);
+}
+
+.update-area {
+    background-color: var(--bg-primary);
+    border-color: var(--accent);
+}
+
+thead {
+    background-color: var(--bg-secondary);
+    border-bottom-color: var(--dark);
+}
+
+blockquote {
+    background-color: var(--bg-secondary);
+    border-left-color: var(--grey);
 }

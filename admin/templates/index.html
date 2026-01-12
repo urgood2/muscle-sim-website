@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Post | Byteden Games</title>
+    <style>
+        :root {
+            --bg: #0a0a0a;
+            --text: #00ff00;
+            --text-dim: #008800;
+            --border: #00ff00;
+            --accent: #00ffff;
+            --error: #ff0000;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Courier New', monospace;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        
+        h1::before {
+            content: "/// ";
+            color: var(--text-dim);
+        }
+        
+        .panel {
+            border: 2px solid var(--border);
+            margin-bottom: 20px;
+            background: rgba(0, 255, 0, 0.05);
+        }
+        
+        .panel-header {
+            background: var(--border);
+            color: var(--bg);
+            padding: 5px 10px;
+            font-weight: bold;
+        }
+        
+        .panel-body {
+            padding: 15px;
+        }
+        
+        .drop-zone {
+            border: 2px dashed var(--text-dim);
+            padding: 40px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            min-height: 150px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .drop-zone:hover, .drop-zone.dragover {
+            border-color: var(--accent);
+            background: rgba(0, 255, 255, 0.1);
+        }
+        
+        .drop-zone.has-image {
+            padding: 10px;
+        }
+        
+        .drop-zone img {
+            max-width: 100%;
+            max-height: 300px;
+            margin-bottom: 10px;
+        }
+        
+        .image-info {
+            font-size: 12px;
+            color: var(--text-dim);
+            margin-top: 10px;
+        }
+        
+        .image-info span {
+            color: var(--accent);
+        }
+        
+        textarea {
+            width: 100%;
+            min-height: 200px;
+            background: var(--bg);
+            border: 1px solid var(--text-dim);
+            color: var(--text);
+            font-family: inherit;
+            font-size: 14px;
+            padding: 10px;
+            resize: vertical;
+        }
+        
+        textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+        
+        .actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        button {
+            background: var(--bg);
+            border: 2px solid var(--border);
+            color: var(--text);
+            padding: 10px 20px;
+            font-family: inherit;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        button:hover {
+            background: var(--border);
+            color: var(--bg);
+        }
+        
+        button.primary {
+            background: var(--border);
+            color: var(--bg);
+        }
+        
+        button.primary:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+        }
+        
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .checkbox-group input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            accent-color: var(--border);
+        }
+        
+        .status {
+            margin-top: 20px;
+            padding: 15px;
+            border: 2px solid var(--text-dim);
+            display: none;
+        }
+        
+        .status.success {
+            border-color: var(--text);
+            display: block;
+        }
+        
+        .status.error {
+            border-color: var(--error);
+            color: var(--error);
+            display: block;
+        }
+        
+        .status.loading {
+            border-color: var(--accent);
+            color: var(--accent);
+            display: block;
+        }
+        
+        .clear-btn {
+            font-size: 12px;
+            padding: 5px 10px;
+            margin-top: 10px;
+        }
+        
+        .hidden-input {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>QUICK_POST</h1>
+        
+        <div class="panel">
+            <div class="panel-header">> IMAGE_UPLOAD</div>
+            <div class="panel-body">
+                <div class="drop-zone" id="dropZone">
+                    <div class="drop-text">
+                        Drop image here, paste from clipboard (Ctrl+V), or click to select
+                    </div>
+                </div>
+                <input type="file" id="fileInput" class="hidden-input" accept="image/*">
+                <div class="image-info" id="imageInfo"></div>
+            </div>
+        </div>
+        
+        <div class="panel">
+            <div class="panel-header">> POST_CONTENT</div>
+            <div class="panel-body">
+                <textarea id="content" placeholder="Write your post content here..."></textarea>
+            </div>
+        </div>
+        
+        <div class="checkbox-group">
+            <input type="checkbox" id="autoPush">
+            <label for="autoPush">Commit & push to GitHub after publishing</label>
+        </div>
+        
+        <div class="actions">
+            <button class="primary" id="publishBtn" onclick="publishPost()">[ PUBLISH ]</button>
+            <button onclick="clearForm()">[ CLEAR ]</button>
+        </div>
+        
+        <div class="status" id="status"></div>
+    </div>
+    
+    <script>
+        let imageData = null;
+        const dropZone = document.getElementById('dropZone');
+        const fileInput = document.getElementById('fileInput');
+        const imageInfo = document.getElementById('imageInfo');
+        const status = document.getElementById('status');
+        
+        dropZone.addEventListener('click', () => fileInput.click());
+        
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropZone.classList.add('dragover');
+        });
+        
+        dropZone.addEventListener('dragleave', () => {
+            dropZone.classList.remove('dragover');
+        });
+        
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('dragover');
+            const file = e.dataTransfer.files[0];
+            if (file && file.type.startsWith('image/')) {
+                handleImage(file);
+            }
+        });
+        
+        fileInput.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (file) handleImage(file);
+        });
+        
+        document.addEventListener('paste', (e) => {
+            const items = e.clipboardData.items;
+            for (let item of items) {
+                if (item.type.startsWith('image/')) {
+                    const file = item.getAsFile();
+                    handleImage(file);
+                    break;
+                }
+            }
+        });
+        
+        async function handleImage(file) {
+            const reader = new FileReader();
+            reader.onload = async (e) => {
+                imageData = e.target.result;
+                
+                const formData = new FormData();
+                formData.append('image_base64', imageData);
+                
+                try {
+                    const response = await fetch('/preview', {
+                        method: 'POST',
+                        body: formData
+                    });
+                    
+                    const result = await response.json();
+                    
+                    if (result.error) {
+                        showStatus('Error: ' + result.error, 'error');
+                        return;
+                    }
+                    
+                    dropZone.textContent = '';
+                    const img = document.createElement('img');
+                    img.src = result.preview;
+                    img.alt = 'Preview';
+                    const clearBtn = document.createElement('button');
+                    clearBtn.className = 'clear-btn';
+                    clearBtn.textContent = '[ REMOVE ]';
+                    clearBtn.onclick = clearImage;
+                    dropZone.appendChild(img);
+                    dropZone.appendChild(clearBtn);
+                    dropZone.classList.add('has-image');
+                    
+                    imageInfo.textContent = `Original: ${result.original_dimensions} (${formatBytes(result.original_size)}) → Processed: ${result.processed_dimensions} (${formatBytes(result.processed_size)}) | Saved: ${result.compression_ratio}`;
+                } catch (err) {
+                    showStatus('Error processing image: ' + err.message, 'error');
+                }
+            };
+            reader.readAsDataURL(file);
+        }
+        
+        function clearImage(e) {
+            if (e) e.stopPropagation();
+            imageData = null;
+            dropZone.textContent = '';
+            const dropText = document.createElement('div');
+            dropText.className = 'drop-text';
+            dropText.textContent = 'Drop image here, paste from clipboard (Ctrl+V), or click to select';
+            dropZone.appendChild(dropText);
+            dropZone.classList.remove('has-image');
+            imageInfo.textContent = '';
+            fileInput.value = '';
+        }
+        
+        async function publishPost() {
+            const content = document.getElementById('content').value.trim();
+            const autoPush = document.getElementById('autoPush').checked;
+            
+            if (!content) {
+                showStatus('Error: Content is required', 'error');
+                return;
+            }
+            
+            if (autoPush && !confirm('This will push to GitHub immediately. Continue?')) {
+                return;
+            }
+            
+            const publishBtn = document.getElementById('publishBtn');
+            publishBtn.disabled = true;
+            showStatus('Publishing...', 'loading');
+            
+            try {
+                const formData = new FormData();
+                formData.append('content', content);
+                formData.append('push', autoPush.toString());
+                
+                if (imageData) {
+                    formData.append('image_base64', imageData);
+                }
+                
+                const response = await fetch('/post', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.json();
+                
+                if (result.error) {
+                    showStatus('Error: ' + result.error, 'error');
+                } else {
+                    let msg = `Success! Created ${result.post_filename}`;
+                    if (result.image_filename) {
+                        msg += ` with image ${result.image_filename}`;
+                    }
+                    if (result.pushed) {
+                        msg += ' (pushed to GitHub)';
+                    }
+                    showStatus(msg, 'success');
+                    clearForm();
+                }
+            } catch (err) {
+                showStatus('Error: ' + err.message, 'error');
+            } finally {
+                publishBtn.disabled = false;
+            }
+        }
+        
+        function clearForm() {
+            document.getElementById('content').value = '';
+            clearImage(new Event('click'));
+            status.className = 'status';
+        }
+        
+        function showStatus(message, type) {
+            status.textContent = message;
+            status.className = 'status ' + type;
+        }
+        
+        function formatBytes(bytes) {
+            if (bytes < 1024) return bytes + ' B';
+            if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+            return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+        }
+    </script>
+</body>
+</html>
