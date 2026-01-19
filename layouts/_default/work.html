@@ -7,8 +7,9 @@
     {{ range .Params.content }}
       <div class="col-md-6 col-lg-4 mb-4">
         <div class="game-card">
+          {{ $title := .title }}
           {{ with .image }}
-          <img src="{{ . }}" alt="Game Screenshot" class="img-fluid">
+          <img src="{{ . }}" alt="{{ $title | default "Game Screenshot" }}" class="img-fluid">
           {{ end }}
           
           <div class="game-card-body flex-grow-1">

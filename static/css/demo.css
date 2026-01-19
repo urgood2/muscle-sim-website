@@ -81,6 +81,17 @@
   margin: 0 0 24px;
 }
 
+.demo-hero__status {
+  font-family: 'Cascadia Code', monospace;
+  font-size: 0.8rem;
+  color: var(--grey);
+  margin: 0 0 20px;
+  padding: 6px 10px;
+  border: 1px dashed var(--dark);
+  background: var(--offwhite);
+  display: inline-block;
+}
+
 /* Hero Media */
 .demo-hero__media {
   margin: 0 auto 24px;
