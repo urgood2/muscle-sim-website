@@ -5,6 +5,16 @@ services:
   - "Here you'll find some simple games. Try them out!"
 content:
 
+  - image: "/images/demo/hero-poster.svg"
+    pretitle: "early alpha"
+    title: "[GAME TITLE] - Early Alpha Demo"
+    text: "Stack spells. Break waves. Chill. Follow the alpha and get demo access."
+    buttons:
+      - url: "/demo/"
+        label: "View demo page"
+      - url: "https://discord.gg/urpjVuPwjW"
+        label: "Join Discord"
+
   - image: "/images/FG85BP.png"
     pretitle: "lorem ipsum"
     title: "Echo of the Void: Homesong"   # fetched from the Jame Gam #50 entry :contentReference[oaicite:2]{index=2}
