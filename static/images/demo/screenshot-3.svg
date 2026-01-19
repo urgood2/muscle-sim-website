@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <rect fill="#2a2a2a" width="1280" height="720"/>
+  <rect fill="#FF8C42" x="540" y="260" width="200" height="200" opacity="0.6"/>
+  <text x="640" y="340" font-family="monospace" font-size="32" fill="#888" text-anchor="middle">SCREENSHOT 3</text>
+  <text x="640" y="390" font-family="monospace" font-size="18" fill="#666" text-anchor="middle">Action shot with spell effects</text>
+  <text x="640" y="440" font-family="monospace" font-size="14" fill="#555" text-anchor="middle">1280 x 720 (16:9)</text>
+</svg>

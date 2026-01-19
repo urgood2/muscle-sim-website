@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450">
+  <rect fill="#3a3a3a" width="800" height="450"/>
+  <rect fill="#FF8C42" x="50" y="50" width="100" height="100" opacity="0.3"/>
+  <rect fill="#4A9D8C" x="650" y="300" width="100" height="100" opacity="0.3"/>
+  <text x="400" y="210" font-family="monospace" font-size="24" fill="#888" text-anchor="middle">WIP SCREENSHOT</text>
+  <text x="400" y="250" font-family="monospace" font-size="14" fill="#666" text-anchor="middle">Work in progress - placeholder art</text>
+</svg>

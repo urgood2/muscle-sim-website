@@ -1,0 +1,699 @@
+/* Demo Landing Page Styles
+   Extends terminal aesthetic with warm "cozy apocalypse" accents
+   Colors: Ember #FF8C42, Moss #4A9D8C
+*/
+
+:root {
+  --demo-ember: #FF8C42;
+  --demo-moss: #4A9D8C;
+  --demo-ember-soft: #FFB88C;
+  --demo-moss-soft: #7BC4B6;
+}
+
+/* ============================================
+   PAGE CONTAINER
+   ============================================ */
+.demo-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px 80px;
+}
+
+/* ============================================
+   HERO SECTION
+   ============================================ */
+.demo-hero {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: linear-gradient(135deg, rgba(255, 140, 66, 0.05) 0%, rgba(74, 157, 140, 0.05) 100%);
+}
+
+.demo-hero__content {
+  text-align: center;
+  max-width: 800px;
+  width: 100%;
+}
+
+/* Title + Badge */
+.demo-hero__title-area {
+  margin-bottom: 20px;
+}
+
+.demo-hero__title {
+  font-family: var(--title);
+  font-size: clamp(2rem, 8vw, 4rem);
+  font-weight: 700;
+  color: var(--dark);
+  margin: 0;
+  line-height: 1.1;
+}
+
+.demo-hero__badge {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 4px 12px;
+  background: var(--demo-ember);
+  color: var(--white);
+  font-family: var(--title);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  border: 2px solid var(--dark);
+}
+
+/* Taglines */
+.demo-hero__tagline {
+  font-family: var(--title);
+  font-size: clamp(1.25rem, 4vw, 1.75rem);
+  font-weight: 600;
+  color: var(--dark);
+  margin: 0 0 8px;
+}
+
+.demo-hero__clarity {
+  font-family: 'Cascadia Code', monospace;
+  font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+  color: var(--grey);
+  margin: 0 0 24px;
+}
+
+/* Hero Media */
+.demo-hero__media {
+  margin: 0 auto 24px;
+  max-width: 640px;
+  border: 2px solid var(--dark);
+  box-shadow: 4px 4px 0 var(--dark);
+  overflow: hidden;
+  background: var(--dark);
+}
+
+.demo-hero__video,
+.demo-hero__placeholder {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+/* Dual CTAs */
+.demo-hero__ctas {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.demo-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px 32px;
+  min-width: 200px;
+  text-decoration: none;
+  border: 2px solid var(--dark);
+  box-shadow: 4px 4px 0 var(--dark);
+  transition: all 0.2s ease;
+}
+
+.demo-cta:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--dark);
+  text-decoration: none;
+}
+
+.demo-cta--discord {
+  background: var(--demo-moss);
+  color: var(--white);
+}
+
+.demo-cta--discord:hover {
+  background: var(--demo-moss-soft);
+  color: var(--dark);
+}
+
+.demo-cta--newsletter {
+  background: var(--demo-ember);
+  color: var(--white);
+}
+
+.demo-cta--newsletter:hover {
+  background: var(--demo-ember-soft);
+  color: var(--dark);
+}
+
+.demo-cta__label {
+  font-family: var(--title);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: inherit;
+}
+
+.demo-cta__micro {
+  font-family: 'Cascadia Code', monospace;
+  font-size: 0.75rem;
+  opacity: 0.9;
+  margin-top: 4px;
+  color: inherit;
+}
+
+/* Access Line */
+.demo-hero__access {
+  font-family: 'Cascadia Code', monospace;
+  font-size: 0.85rem;
+  color: var(--grey);
+  margin: 0 0 20px;
+}
+
+/* Trust Row */
+.demo-hero__trust {
+  font-family: 'Cascadia Code', monospace;
+  font-size: 0.7rem;
+  color: var(--grey);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+.demo-hero__trust span {
+  font-family: inherit;
+  color: inherit;
+}
+
+.demo-hero__trust-sep {
+  opacity: 0.4;
+}
+
+/* ============================================
+   GENERAL SECTIONS
+   ============================================ */
+.demo-section {
+  padding: 60px 0;
+  border-top: 2px dashed var(--dark);
+  border-top-style: dashed;
+  opacity: 1;
+}
+
+.demo-hero + .demo-section {
+  border-top: none;
+}
+
+.demo-section__inner {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.demo-section__title {
+  font-family: var(--title);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--dark);
+  margin: 0 0 24px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--demo-ember);
+  display: inline-block;
+}
+
+/* ============================================
+   IN THIS BUILD
+   ============================================ */
+.demo-build__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.demo-build__list li {
+  font-family: 'Cascadia Code', monospace;
+  font-size: 1.1rem;
+  padding: 12px 0 12px 32px;
+  position: relative;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.demo-build__list li::before {
+  content: ">";
+  position: absolute;
+  left: 0;
+  color: var(--demo-moss);
+  font-weight: bold;
+}
+
+/* ============================================
+   PROOF OF UNIQUENESS
+   ============================================ */
+.demo-proof__intro,
+.demo-proof__outro {
+  font-family: var(--summary);
+  font-size: 1.1rem;
+  color: var(--dark);
+  margin: 0 0 20px;
+}
+
+.demo-proof__examples {
+  margin: 24px 0;
+}
+
+.demo-proof__combo {
+  font-family: 'Cascadia Code', monospace;
+  font-size: 1rem;
+  padding: 16px;
+  margin-bottom: 12px;
+  background: var(--offwhite);
+  border: 2px solid var(--dark);
+  box-shadow: 4px 4px 0 var(--dark);
+}
+
+.demo-proof__combo strong {
+  color: var(--demo-ember);
+}
+
+.demo-proof__media {
+  margin-top: 32px;
+  max-width: 480px;
+  border: 2px solid var(--dark);
+  box-shadow: 4px 4px 0 var(--dark);
+  overflow: hidden;
+}
+
+.demo-proof__video,
+.demo-proof__placeholder {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+/* ============================================
+   MEDIA GALLERY
+   ============================================ */
+.demo-gallery__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.demo-gallery__item {
+  margin: 0;
+  border: 2px solid var(--dark);
+  box-shadow: 4px 4px 0 var(--dark);
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+.demo-gallery__item:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--demo-moss);
+}
+
+.demo-gallery__item img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+/* ============================================
+   ALPHA EXPECTATIONS
+   ============================================ */
+.demo-alpha {
+  background: linear-gradient(180deg, rgba(255, 140, 66, 0.08) 0%, transparent 100%);
+}
+
+.demo-alpha__intro {
+  font-family: var(--summary);
+  font-size: 1.1rem;
+  margin: 0 0 20px;
+}
+
+.demo-alpha__list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px;
+}
+
+.demo-alpha__list li {
+  font-family: 'Cascadia Code', monospace;
+  font-size: 1rem;
+  padding: 10px 0 10px 28px;
+  position: relative;
+  color: var(--grey);
+}
+
+.demo-alpha__list li::before {
+  content: "!";
+  position: absolute;
+  left: 0;
+  color: var(--demo-ember);
+  font-weight: bold;
+}
+
+.demo-alpha__wip {
+  margin: 24px 0;
+  max-width: 400px;
+}
+
+.demo-alpha__wip img {
+  display: block;
+  width: 100%;
+  border: 2px dashed var(--grey);
+  filter: grayscale(30%);
+}
+
+.demo-alpha__wip figcaption {
+  font-family: 'Cascadia Code', monospace;
+  font-size: 0.75rem;
+  color: var(--grey);
+  margin-top: 8px;
+  font-style: italic;
+}
+
+.demo-alpha__invite {
+  font-family: var(--summary);
+  font-size: 1.1rem;
+  color: var(--demo-moss);
+  font-weight: 600;
+  margin: 0;
+}
+
+/* ============================================
+   ROADMAP
+   ============================================ */
+.demo-roadmap {
+  background: var(--offwhite);
+}
+
+.demo-roadmap__column {
+  margin-bottom: 24px;
+}
+
+.demo-roadmap__heading {
+  font-family: var(--title);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--demo-ember);
+  margin: 0 0 12px;
+  letter-spacing: 0.05em;
+}
+
+.demo-roadmap__heading--done {
+  color: var(--demo-moss);
+}
+
+.demo-roadmap__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.demo-roadmap__list li {
+  font-family: 'Cascadia Code', monospace;
+  font-size: 0.95rem;
+  padding: 6px 0;
+  padding-left: 20px;
+  position: relative;
+}
+
+.demo-roadmap__list li::before {
+  content: "-";
+  position: absolute;
+  left: 0;
+}
+
+.demo-roadmap__list--done li {
+  color: var(--grey);
+}
+
+.demo-roadmap__list--done s {
+  text-decoration: line-through;
+}
+
+/* ============================================
+   FAQ
+   ============================================ */
+.demo-faq__list {
+  margin: 0 0 32px;
+}
+
+.demo-faq__list dt {
+  font-family: var(--title);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--dark);
+  margin-top: 20px;
+  padding-left: 20px;
+  position: relative;
+}
+
+.demo-faq__list dt::before {
+  content: "Q";
+  position: absolute;
+  left: 0;
+  color: var(--demo-moss);
+}
+
+.demo-faq__list dd {
+  font-family: 'Cascadia Code', monospace;
+  font-size: 0.95rem;
+  color: var(--grey);
+  margin: 8px 0 0 20px;
+  padding-left: 0;
+}
+
+.demo-faq__sysreq {
+  padding: 16px;
+  background: var(--offwhite);
+  border: 2px solid var(--dark);
+  box-shadow: 4px 4px 0 var(--dark);
+}
+
+.demo-faq__sysreq h3 {
+  font-family: var(--title);
+  font-size: 0.9rem;
+  margin: 0 0 8px;
+}
+
+.demo-faq__sysreq p {
+  font-family: 'Cascadia Code', monospace;
+  font-size: 0.85rem;
+  color: var(--grey);
+  margin: 0;
+}
+
+/* ============================================
+   FOOTER CTAs + NEWSLETTER
+   ============================================ */
+.demo-footer-ctas {
+  text-align: center;
+}
+
+.demo-footer__ctas {
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.demo-newsletter-inline {
+  background: var(--offwhite);
+  border: 2px solid var(--dark);
+  box-shadow: 4px 4px 0 var(--dark);
+  padding: 20px 24px;
+  min-width: 300px;
+  max-width: 400px;
+  text-align: left;
+}
+
+.demo-newsletter__label {
+  font-family: var(--title);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--demo-ember);
+  display: block;
+}
+
+.demo-newsletter__micro {
+  font-family: 'Cascadia Code', monospace;
+  font-size: 0.75rem;
+  color: var(--grey);
+  display: block;
+  margin-bottom: 12px;
+}
+
+.demo-newsletter__row {
+  display: flex;
+  gap: 8px;
+}
+
+.demo-newsletter__input {
+  flex: 1;
+  padding: 10px 12px;
+  border: none;
+  border-bottom: 2px solid var(--dark);
+  background: transparent;
+  font-family: 'Cascadia Code', monospace;
+  font-size: 14px;
+}
+
+.demo-newsletter__input:focus {
+  outline: 2px solid var(--demo-ember);
+  outline-offset: 2px;
+}
+
+.demo-newsletter__btn {
+  padding: 10px 16px;
+  background: var(--dark);
+  color: var(--white);
+  border: 2px solid var(--dark);
+  font-family: var(--title);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.demo-newsletter__btn:hover {
+  background: var(--demo-ember);
+}
+
+.demo-footer__creator {
+  font-family: 'Cascadia Code', monospace;
+  font-size: 0.85rem;
+  color: var(--grey);
+  margin-top: 32px;
+}
+
+/* ============================================
+   STICKY MOBILE CTA BAR
+   ============================================ */
+.demo-sticky-cta {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: var(--white);
+  border-top: 2px solid var(--dark);
+  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.demo-sticky-cta__btn {
+  flex: 1;
+  padding: 14px;
+  text-align: center;
+  text-decoration: none;
+  font-family: var(--title);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.demo-sticky-cta__btn--discord {
+  background: var(--demo-moss);
+  color: var(--white);
+}
+
+.demo-sticky-cta__btn--newsletter {
+  background: var(--demo-ember);
+  color: var(--white);
+}
+
+/* ============================================
+   RESPONSIVE - TABLET
+   ============================================ */
+@media (max-width: 768px) {
+  .demo-hero {
+    min-height: auto;
+    padding: 40px 20px 60px;
+  }
+
+  .demo-hero__ctas {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .demo-cta {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .demo-section {
+    padding: 40px 0;
+  }
+
+  .demo-gallery__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ============================================
+   RESPONSIVE - MOBILE
+   ============================================ */
+@media (max-width: 480px) {
+  .demo-page {
+    padding-bottom: 100px; /* Space for sticky bar */
+  }
+
+  .demo-hero__media {
+    margin-left: -20px;
+    margin-right: -20px;
+    max-width: calc(100% + 40px);
+    border-left: none;
+    border-right: none;
+    box-shadow: none;
+  }
+
+  .demo-sticky-cta {
+    display: flex;
+  }
+
+  .demo-hero__trust {
+    font-size: 0.65rem;
+  }
+
+  .demo-cta {
+    padding: 12px 20px;
+  }
+
+  .demo-newsletter-inline {
+    min-width: auto;
+    width: 100%;
+  }
+
+  .demo-newsletter__row {
+    flex-direction: column;
+  }
+
+  .demo-newsletter__btn {
+    width: 100%;
+  }
+}
+
+/* ============================================
+   ABOVE-THE-FOLD OPTIMIZATION
+   Cap hero media height on mobile to keep CTAs visible
+   ============================================ */
+@media (max-height: 700px) and (max-width: 480px) {
+  .demo-hero__media {
+    max-height: 200px;
+  }
+
+  .demo-hero__video {
+    max-height: 200px;
+    object-fit: cover;
+  }
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+@media print {
+  .demo-sticky-cta {
+    display: none !important;
+  }
+}

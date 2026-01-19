@@ -1,0 +1,266 @@
+{{ define "main" }}
+<link rel="stylesheet" href="/css/demo.css">
+
+<main class="demo-page">
+  <!-- 1. HERO SECTION -->
+  <section class="demo-hero">
+    <div class="demo-hero__content">
+      <!-- Logo/Title with Alpha Badge -->
+      <div class="demo-hero__title-area">
+        <h1 class="demo-hero__title">[GAME TITLE]</h1>
+        <span class="demo-hero__badge">EARLY ALPHA</span>
+      </div>
+
+      <!-- Tagline -->
+      <p class="demo-hero__tagline">Stack spells. Break waves. Chill.</p>
+      <p class="demo-hero__clarity">Noita-style wand building meets bullet-heaven swarms.</p>
+
+      <!-- Hero Video/Clip - Replace SVG with actual video when ready -->
+      <div class="demo-hero__media">
+        <img class="demo-hero__placeholder" src="/images/demo/hero-poster.svg" alt="Hero gameplay clip placeholder">
+        <!-- Uncomment when video is ready:
+        <video
+          class="demo-hero__video"
+          autoplay
+          loop
+          muted
+          playsinline
+          poster="/images/demo/hero-poster.png">
+          <source src="/images/demo/hero-clip.mp4" type="video/mp4">
+          <source src="/images/demo/hero-clip.webm" type="video/webm">
+          <img src="/images/demo/hero-fallback.gif" alt="Gameplay showing spell combo">
+        </video>
+        -->
+      </div>
+
+      <!-- Dual CTAs -->
+      <div class="demo-hero__ctas">
+        <a href="https://discord.gg/urpjVuPwjW" class="demo-cta demo-cta--discord" target="_blank" rel="noopener">
+          <span class="demo-cta__label">JOIN DISCORD</span>
+          <span class="demo-cta__micro">Playtest drops + feedback</span>
+        </a>
+        <a href="#newsletter" class="demo-cta demo-cta--newsletter">
+          <span class="demo-cta__label">GET UPDATES</span>
+          <span class="demo-cta__micro">Monthly devlog. No chat.</span>
+        </a>
+      </div>
+
+      <!-- Access Line -->
+      <p class="demo-hero__access">Demo access announced on Discord and by email.</p>
+
+      <!-- Trust Row -->
+      <div class="demo-hero__trust">
+        <span>Free alpha</span>
+        <span class="demo-hero__trust-sep">|</span>
+        <span>Windows / Mac</span>
+        <span class="demo-hero__trust-sep">|</span>
+        <span>Last updated [YYYY-MM-DD]</span>
+        <span class="demo-hero__trust-sep">|</span>
+        <span>No spam</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. IN THIS BUILD -->
+  <section class="demo-section demo-build">
+    <div class="demo-section__inner">
+      <h2 class="demo-section__title">In This Build, You Can</h2>
+      <ul class="demo-build__list">
+        <li>Stack spell parts into wands</li>
+        <li>Survive escalating enemy waves</li>
+        <li>Unlock new components per run</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 3. PROOF OF UNIQUENESS -->
+  <section class="demo-section demo-proof">
+    <div class="demo-section__inner">
+      <h2 class="demo-section__title">Proof of Uniqueness</h2>
+      <p class="demo-proof__intro">The spell stacking isn't just cosmetic.</p>
+
+      <div class="demo-proof__examples">
+        <div class="demo-proof__combo">
+          <strong>Fireball + Split + Homing</strong> &rarr; one spell becomes twelve seeking missiles.
+        </div>
+        <div class="demo-proof__combo">
+          <strong>Freeze + Trigger + Explosion</strong> &rarr; delayed crowd control that shatters frozen enemies.
+        </div>
+      </div>
+
+      <p class="demo-proof__outro">Every component changes the math. Every build choice has tradeoffs.</p>
+
+      <!-- Combo Clip - Replace SVG with actual video when ready -->
+      <div class="demo-proof__media">
+        <img class="demo-proof__placeholder" src="/images/demo/combo-poster.svg" alt="Combo clip placeholder" loading="lazy">
+        <!-- Uncomment when video is ready:
+        <video
+          class="demo-proof__video"
+          autoplay
+          loop
+          muted
+          playsinline
+          loading="lazy"
+          poster="/images/demo/combo-poster.png">
+          <source src="/images/demo/combo-clip.mp4" type="video/mp4">
+          <source src="/images/demo/combo-clip.webm" type="video/webm">
+        </video>
+        -->
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. MEDIA GALLERY -->
+  <section class="demo-section demo-gallery">
+    <div class="demo-section__inner">
+      <h2 class="demo-section__title">Screenshots</h2>
+      <div class="demo-gallery__grid">
+        <figure class="demo-gallery__item">
+          <img src="/images/demo/screenshot-1.svg" alt="Best-looking gameplay moment" loading="lazy">
+        </figure>
+        <figure class="demo-gallery__item">
+          <img src="/images/demo/screenshot-2.svg" alt="Shop or build screen" loading="lazy">
+        </figure>
+        <figure class="demo-gallery__item">
+          <img src="/images/demo/screenshot-3.svg" alt="Action shot with spell effects" loading="lazy">
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. ALPHA EXPECTATIONS -->
+  <section class="demo-section demo-alpha">
+    <div class="demo-section__inner">
+      <h2 class="demo-section__title">Alpha: What to Expect</h2>
+      <p class="demo-alpha__intro">This is an early alpha. The core loop works, but expect rough edges.</p>
+
+      <ul class="demo-alpha__list">
+        <li>Limited enemy variety and spell selection</li>
+        <li>Placeholder art in some areas</li>
+        <li>Balance is experimental</li>
+      </ul>
+
+      <figure class="demo-alpha__wip">
+        <img src="/images/demo/screenshot-wip.svg" alt="Work in progress screenshot" loading="lazy">
+        <figcaption>Work in progress - placeholder art in some areas</figcaption>
+      </figure>
+
+      <p class="demo-alpha__invite">If you enjoy watching games evolve and shaping them, this is for you.</p>
+    </div>
+  </section>
+
+  <!-- 6. ROADMAP -->
+  <section class="demo-section demo-roadmap">
+    <div class="demo-section__inner">
+      <h2 class="demo-section__title">Dev Update / Roadmap</h2>
+
+      <div class="demo-roadmap__column">
+        <h3 class="demo-roadmap__heading">CURRENT FOCUS:</h3>
+        <ul class="demo-roadmap__list">
+          <li>Core spell-stacking system</li>
+          <li>Enemy wave balancing</li>
+        </ul>
+      </div>
+
+      <div class="demo-roadmap__column">
+        <h3 class="demo-roadmap__heading demo-roadmap__heading--done">DONE:</h3>
+        <ul class="demo-roadmap__list demo-roadmap__list--done">
+          <li><s>Basic movement and controls</s></li>
+          <li><s>Spell component system</s></li>
+          <li><s>Wave spawning</s></li>
+        </ul>
+      </div>
+
+      <div class="demo-roadmap__column">
+        <h3 class="demo-roadmap__heading">COMING NEXT:</h3>
+        <ul class="demo-roadmap__list">
+          <li>More spell components</li>
+          <li>Boss encounters</li>
+          <li>Sound design</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. FAQ + SYSTEM REQUIREMENTS -->
+  <section class="demo-section demo-faq">
+    <div class="demo-section__inner">
+      <h2 class="demo-section__title">FAQ</h2>
+
+      <dl class="demo-faq__list">
+        <dt>Is it free?</dt>
+        <dd>Yes, the alpha is completely free.</dd>
+
+        <dt>How long is a run?</dt>
+        <dd>Around 15-20 minutes, depending on how far you get.</dd>
+
+        <dt>What's in the alpha right now?</dt>
+        <dd>Core spell stacking, basic enemy waves, and a handful of unlockable components.</dd>
+
+        <dt>Where do I report bugs?</dt>
+        <dd>The #bugs channel on Discord is the best place.</dd>
+
+        <dt>How often do updates drop?</dt>
+        <dd>Roughly every 2-4 weeks during active development.</dd>
+      </dl>
+
+      <div class="demo-faq__sysreq">
+        <h3>System Requirements</h3>
+        <p>Currently: Windows / Mac. Controller support: TBD.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. FOOTER CTAs + NEWSLETTER -->
+  <section class="demo-section demo-footer-ctas" id="newsletter">
+    <div class="demo-section__inner">
+      <h2 class="demo-section__title">Stay Connected</h2>
+
+      <!-- Dual CTAs repeated -->
+      <div class="demo-hero__ctas demo-footer__ctas">
+        <a href="https://discord.gg/urpjVuPwjW" class="demo-cta demo-cta--discord" target="_blank" rel="noopener">
+          <span class="demo-cta__label">JOIN DISCORD</span>
+          <span class="demo-cta__micro">Playtest drops + feedback</span>
+        </a>
+        <div class="demo-newsletter-inline">
+          <form class="demo-newsletter__form"
+                action="https://buttondown.email/api/emails/embed-subscribe/{{ .Site.Params.buttondown_username | default "byteden" }}"
+                method="post"
+                target="popupwindow"
+                onsubmit="window.open('https://buttondown.email/{{ .Site.Params.buttondown_username | default "byteden" }}', 'popupwindow')">
+            <label class="demo-newsletter__label" for="demo-email">GET UPDATES</label>
+            <span class="demo-newsletter__micro">Monthly devlog. No chat.</span>
+            <div class="demo-newsletter__row">
+              <input id="demo-email"
+                     class="demo-newsletter__input"
+                     type="email"
+                     name="email"
+                     placeholder="you@example.com"
+                     required
+                     autocomplete="email"
+                     inputmode="email" />
+              <button type="submit" class="demo-newsletter__btn">[SUBSCRIBE]</button>
+            </div>
+            <input type="hidden" name="embed" value="1">
+            <input type="hidden" name="tag" value="demo-page">
+          </form>
+        </div>
+      </div>
+
+      <!-- Creator Line -->
+      <p class="demo-footer__creator">Made by Byteden. No publishers, just shipping.</p>
+    </div>
+  </section>
+</main>
+
+<!-- Sticky Mobile CTA Bar -->
+<div class="demo-sticky-cta">
+  <a href="https://discord.gg/urpjVuPwjW" class="demo-sticky-cta__btn demo-sticky-cta__btn--discord" target="_blank" rel="noopener">
+    DISCORD
+  </a>
+  <a href="#newsletter" class="demo-sticky-cta__btn demo-sticky-cta__btn--newsletter">
+    UPDATES
+  </a>
+</div>
+
+{{ end }}

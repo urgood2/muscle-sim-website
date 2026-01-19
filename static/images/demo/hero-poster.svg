@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <rect fill="#1a1a1a" width="1280" height="720"/>
+  <rect fill="#FF8C42" x="100" y="100" width="300" height="300" opacity="0.4"/>
+  <rect fill="#4A9D8C" x="880" y="320" width="300" height="300" opacity="0.4"/>
+  <text x="640" y="340" font-family="monospace" font-size="48" fill="#FF8C42" text-anchor="middle">HERO VIDEO POSTER</text>
+  <text x="640" y="400" font-family="monospace" font-size="20" fill="#666" text-anchor="middle">Replace with actual gameplay poster</text>
+  <text x="640" y="440" font-family="monospace" font-size="16" fill="#555" text-anchor="middle">10-20s looping clip (MP4/WebM)</text>
+</svg>
