@@ -29,40 +29,29 @@
 }
 
 /* ============================================
-   SHADER-STYLE BACKGROUND
+   WEBGL SHADER BACKGROUND
    ============================================ */
-@keyframes noise-shift {
-  0%, 100% { background-position: 0 0, 50px 50px; }
-  25% { background-position: 10px 10px, 60px 40px; }
-  50% { background-position: 5px 15px, 45px 55px; }
-  75% { background-position: 15px 5px, 55px 45px; }
+#oily-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  pointer-events: none;
 }
 
+/* Fallback if WebGL fails - otherwise transparent to show shader */
 .demo-page {
   position: relative;
-  background-color: var(--r64-bg-dark);
-  background-image:
-    /* Pixelated noise layer */
-    repeating-linear-gradient(
-      0deg,
-      transparent,
-      transparent 2px,
-      rgba(98, 85, 101, 0.03) 2px,
-      rgba(98, 85, 101, 0.03) 4px
-    ),
-    repeating-linear-gradient(
-      90deg,
-      transparent,
-      transparent 2px,
-      rgba(98, 85, 101, 0.03) 2px,
-      rgba(98, 85, 101, 0.03) 4px
-    ),
-    /* Color gradient overlay */
-    radial-gradient(ellipse at 20% 30%, rgba(245, 125, 74, 0.15) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 70%, rgba(14, 175, 155, 0.12) 0%, transparent 50%),
-    radial-gradient(ellipse at 50% 100%, rgba(144, 94, 169, 0.1) 0%, transparent 40%);
-  animation: noise-shift 8s ease-in-out infinite;
-  image-rendering: pixelated;
+  background-color: transparent;
+}
+
+/* Only show fallback color if no WebGL */
+@supports not (background: paint(something)) {
+  .demo-page:has(~ #oily-background:empty) {
+    background-color: var(--r64-bg-dark);
+  }
 }
 
 /* ============================================
@@ -75,6 +64,17 @@
 }
 
 /* ============================================
+   TEXT READABILITY ENHANCEMENTS
+   ============================================ */
+.demo-page h1, .demo-page h2, .demo-page h3 {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.demo-page p, .demo-page li, .demo-page dd, .demo-page dt {
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+/* ============================================
    HERO SECTION
    ============================================ */
 .demo-hero {
@@ -84,13 +84,15 @@
   align-items: center;
   justify-content: center;
   padding: 20px;
-  background: transparent;
+  background: none;
 }
 
 .demo-hero__content {
   text-align: center;
   max-width: 800px;
   width: 100%;
+  padding: 32px;
+  background: transparent;
 }
 
 /* Title + Badge */
@@ -277,6 +279,9 @@
 .demo-section__inner {
   max-width: 800px;
   margin: 0 auto;
+  padding: 24px;
+  background: rgba(46, 34, 47, 0.4);
+  border-radius: 4px;
 }
 
 .demo-section__title {
@@ -398,7 +403,7 @@
    ALPHA EXPECTATIONS
    ============================================ */
 .demo-alpha {
-  background: linear-gradient(180deg, rgba(245, 125, 74, 0.08) 0%, transparent 100%);
+  background: none;
 }
 
 .demo-alpha__intro {
@@ -464,7 +469,7 @@
    ROADMAP
    ============================================ */
 .demo-roadmap {
-  background: rgba(62, 53, 70, 0.5);
+  background: none;
 }
 
 .demo-roadmap__column {
