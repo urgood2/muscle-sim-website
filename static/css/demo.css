@@ -519,6 +519,18 @@
   text-decoration: line-through;
 }
 
+.demo-roadmap__sync-time {
+  margin-top: 24px;
+  text-align: right;
+  opacity: 0.5;
+}
+
+.demo-roadmap__sync-time small {
+  font-family: 'Cascadia Code', monospace;
+  font-size: 0.7rem;
+  color: var(--r64-cream);
+}
+
 /* ============================================
    FAQ
    ============================================ */

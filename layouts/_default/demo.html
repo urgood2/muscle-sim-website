@@ -153,36 +153,66 @@
           </div>
   </section>
 
-  <!-- 6. ROADMAP -->
+  <!-- 6. ROADMAP (auto-synced from Obsidian Kanban) -->
   <section class="demo-section demo-roadmap">
     <div class="demo-section__inner">
       <h2 class="demo-section__title">Dev Update / Roadmap</h2>
 
+      {{ $roadmap := .Site.Data.roadmap }}
+      {{ if $roadmap }}
+
+      <!-- CURRENT FOCUS (In Progress) -->
+      {{ with $roadmap.columns.current }}
+      {{ if .items }}
       <div class="demo-roadmap__column">
-        <h3 class="demo-roadmap__heading">CURRENT FOCUS:</h3>
+        <h3 class="demo-roadmap__heading">{{ .title }}:</h3>
         <ul class="demo-roadmap__list">
-          <li>Core spell-stacking system</li>
-          <li>Enemy wave balancing</li>
+          {{ range .items }}
+          <li>{{ . }}</li>
+          {{ end }}
         </ul>
       </div>
+      {{ end }}
+      {{ end }}
 
+      <!-- DONE -->
+      {{ with $roadmap.columns.done }}
+      {{ if .items }}
       <div class="demo-roadmap__column">
-        <h3 class="demo-roadmap__heading demo-roadmap__heading--done">DONE:</h3>
+        <h3 class="demo-roadmap__heading demo-roadmap__heading--done">{{ .title }}:</h3>
         <ul class="demo-roadmap__list demo-roadmap__list--done">
-          <li><s>Basic movement and controls</s></li>
-          <li><s>Spell component system</s></li>
-          <li><s>Wave spawning</s></li>
+          {{ range .items }}
+          <li><s>{{ . }}</s></li>
+          {{ end }}
         </ul>
       </div>
+      {{ end }}
+      {{ end }}
 
+      <!-- COMING NEXT (TODO) -->
+      {{ with $roadmap.columns.todo }}
+      {{ if .items }}
       <div class="demo-roadmap__column">
-        <h3 class="demo-roadmap__heading">COMING NEXT:</h3>
+        <h3 class="demo-roadmap__heading">{{ .title }}:</h3>
         <ul class="demo-roadmap__list">
-          <li>More spell components</li>
-          <li>Boss encounters</li>
-          <li>Sound design</li>
+          {{ range .items }}
+          <li>{{ . }}</li>
+          {{ end }}
         </ul>
       </div>
+      {{ end }}
+      {{ end }}
+
+      <!-- Last synced timestamp -->
+      <p class="demo-roadmap__sync-time">
+        <small>Last updated: {{ $roadmap.lastSynced | time.Format "Jan 2, 2006" }}</small>
+      </p>
+
+      {{ else }}
+      <!-- Fallback if no data -->
+      <p>Roadmap coming soon.</p>
+      {{ end }}
+
     </div>
   </section>
 

@@ -1,0 +1,18 @@
+{
+  "lastSynced": "2026-01-23T02:00:00Z",
+  "source": "Surviorslike Kanban.md",
+  "columns": {
+    "current": {
+      "title": "CURRENT FOCUS",
+      "items": []
+    },
+    "todo": {
+      "title": "COMING NEXT",
+      "items": []
+    },
+    "done": {
+      "title": "DONE",
+      "items": []
+    }
+  }
+}
