@@ -33,14 +33,14 @@
     const vec3 color2 = vec3(0.565, 0.369, 0.663);  // #905ea9 purple
     const vec3 color3 = vec3(0.180, 0.133, 0.184);  // #2e222f dark
 
-    // Effect parameters (tuned for web background)
-    const float flow_speed = 0.3;
+    // Effect parameters (tuned for web background - chunky pixels like game)
+    const float flow_speed = 0.25;
     const float curl_scale = 2.0;
     const float curl_intensity = 0.8;
-    const float iridescence = 0.25;
-    const float contrast = 1.0;
-    const float brightness = -0.05;
-    const float pixel_size = 6.0;
+    const float iridescence = 0.3;
+    const float contrast = 1.1;
+    const float brightness = -0.08;
+    const float pixel_size = 14.0;  // 7px base * 2x scale = visible chunky pixels
 
     float hash(vec2 p) {
       return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453);
@@ -173,13 +173,13 @@
     vec3 color2 = vec3(0.565, 0.369, 0.663);
     vec3 color3 = vec3(0.180, 0.133, 0.184);
 
-    float flow_speed = 0.3;
+    float flow_speed = 0.25;
     float curl_scale = 2.0;
     float curl_intensity = 0.8;
-    float iridescence = 0.25;
-    float contrast = 1.0;
-    float brightness = -0.05;
-    float pixel_size = 6.0;
+    float iridescence = 0.3;
+    float contrast = 1.1;
+    float brightness = -0.08;
+    float pixel_size = 14.0;  // 7px base * 2x scale = visible chunky pixels
 
     float hash(vec2 p) {
       return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453);
