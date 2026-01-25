@@ -28,19 +28,54 @@
     uniform float iTime;
     uniform vec2 resolution;
 
-    // Resurrect64 colors
+    // Resurrect64 colors (base mixing colors)
     const vec3 color1 = vec3(0.055, 0.686, 0.608);  // #0eaf9b teal
     const vec3 color2 = vec3(0.565, 0.369, 0.663);  // #905ea9 purple
     const vec3 color3 = vec3(0.180, 0.133, 0.184);  // #2e222f dark
+
+    // Resurrect64 palette (16 colors for background - dark/cool subset)
+    const int PALETTE_SIZE = 16;
+    const vec3 palette[16] = vec3[16](
+      vec3(0.180, 0.133, 0.184),  // #2e222f dark bg
+      vec3(0.243, 0.208, 0.275),  // #3e3546 mid bg
+      vec3(0.384, 0.333, 0.396),  // #625565 light bg
+      vec3(0.055, 0.686, 0.608),  // #0eaf9b teal
+      vec3(0.188, 0.882, 0.725),  // #30e1b9 bright teal
+      vec3(0.043, 0.541, 0.561),  // #0b8a8f deep teal
+      vec3(0.565, 0.369, 0.663),  // #905ea9 purple
+      vec3(0.812, 0.396, 0.498),  // #cf657f pink
+      vec3(0.302, 0.608, 0.902),  // #4d9be6 blue
+      vec3(0.569, 0.859, 0.412),  // #91db69 green
+      vec3(0.780, 0.812, 0.816),  // #c7dcd0 cream
+      vec3(0.976, 0.549, 0.290),  // #f98b4a ember
+      vec3(0.984, 0.725, 0.329),  // #fbb954 soft ember
+      vec3(0.918, 0.310, 0.212),  // #ea4f36 hot ember
+      vec3(0.976, 0.761, 0.169),  // #f9c22b yellow
+      vec3(0.337, 0.447, 0.584)   // #567295 slate
+    );
+
+    // Find nearest palette color
+    vec3 quantizeToPalette(vec3 col) {
+      vec3 best = palette[0];
+      float bestDist = distance(col, palette[0]);
+      for (int i = 1; i < PALETTE_SIZE; i++) {
+        float d = distance(col, palette[i]);
+        if (d < bestDist) {
+          bestDist = d;
+          best = palette[i];
+        }
+      }
+      return best;
+    }
 
     // Effect parameters (tuned for web background - chunky pixels like game)
     const float flow_speed = 0.25;
     const float curl_scale = 2.0;
     const float curl_intensity = 0.8;
-    const float iridescence = 0.3;
-    const float contrast = 1.1;
-    const float brightness = -0.08;
-    const float pixel_size = 14.0;  // 7px base * 2x scale = visible chunky pixels
+    const float iridescence = 0.55;  // Increased for more color variety
+    const float contrast = 1.2;      // Slightly higher contrast
+    const float brightness = -0.05;  // Slightly brighter
+    const float pixel_size = 14.0;   // 7px base * 2x scale = visible chunky pixels
 
     float hash(vec2 p) {
       return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453);
@@ -124,15 +159,18 @@
       // Thin-film iridescence
       vec3 oilRainbow = thinFilmInterference(thickness * 4.0, flowVariation + t * 0.5);
 
-      // Mix colors
-      float colorMix1 = smoothstep(0.3, 0.7, flow1);
-      float colorMix2 = smoothstep(0.4, 0.6, flow2);
+      // Mix colors - wider range for more variety
+      float colorMix1 = smoothstep(0.2, 0.8, flow1);
+      float colorMix2 = smoothstep(0.3, 0.7, flow2);
+      float colorMix3 = smoothstep(0.35, 0.65, flow3);
 
       vec3 baseColor = mix(color3, color1, colorMix1);
-      baseColor = mix(baseColor, color2, colorMix2 * 0.6);
+      baseColor = mix(baseColor, color2, colorMix2 * 0.7);
+      // Add warm accent based on third flow layer
+      baseColor = mix(baseColor, vec3(0.976, 0.549, 0.290), colorMix3 * 0.25);
 
-      // Add iridescence
-      vec3 finalCol = mix(baseColor, oilRainbow, iridescence * 0.5);
+      // Add iridescence - stronger effect
+      vec3 finalCol = mix(baseColor, oilRainbow, iridescence);
 
       // Highlights
       float highlight = pow(abs(flow1 - flow2), 2.0) * 2.0;
@@ -145,7 +183,10 @@
       float vignette = 1.0 - length(uv - 0.5) * 0.4;
       finalCol *= vignette;
 
-      finalColor = vec4(clamp(finalCol, 0.0, 1.0), 1.0);
+      // Quantize to palette (the magic sauce)
+      finalCol = quantizeToPalette(clamp(finalCol, 0.0, 1.0));
+
+      finalColor = vec4(finalCol, 1.0);
     }
   `;
 
@@ -168,18 +209,60 @@
     uniform float iTime;
     uniform vec2 resolution;
 
-    // Resurrect64 colors
+    // Resurrect64 colors (base mixing colors)
     vec3 color1 = vec3(0.055, 0.686, 0.608);
     vec3 color2 = vec3(0.565, 0.369, 0.663);
     vec3 color3 = vec3(0.180, 0.133, 0.184);
 
+    // Resurrect64 palette for WebGL1 (can't use const arrays, inline comparison)
+    vec3 quantizeToPalette(vec3 col) {
+      vec3 palette0 = vec3(0.180, 0.133, 0.184);
+      vec3 palette1 = vec3(0.243, 0.208, 0.275);
+      vec3 palette2 = vec3(0.384, 0.333, 0.396);
+      vec3 palette3 = vec3(0.055, 0.686, 0.608);
+      vec3 palette4 = vec3(0.188, 0.882, 0.725);
+      vec3 palette5 = vec3(0.043, 0.541, 0.561);
+      vec3 palette6 = vec3(0.565, 0.369, 0.663);
+      vec3 palette7 = vec3(0.812, 0.396, 0.498);
+      vec3 palette8 = vec3(0.302, 0.608, 0.902);
+      vec3 palette9 = vec3(0.569, 0.859, 0.412);
+      vec3 palette10 = vec3(0.780, 0.812, 0.816);
+      vec3 palette11 = vec3(0.976, 0.549, 0.290);
+      vec3 palette12 = vec3(0.984, 0.725, 0.329);
+      vec3 palette13 = vec3(0.918, 0.310, 0.212);
+      vec3 palette14 = vec3(0.976, 0.761, 0.169);
+      vec3 palette15 = vec3(0.337, 0.447, 0.584);
+
+      vec3 best = palette0;
+      float bestDist = distance(col, palette0);
+      float d;
+
+      d = distance(col, palette1); if (d < bestDist) { bestDist = d; best = palette1; }
+      d = distance(col, palette2); if (d < bestDist) { bestDist = d; best = palette2; }
+      d = distance(col, palette3); if (d < bestDist) { bestDist = d; best = palette3; }
+      d = distance(col, palette4); if (d < bestDist) { bestDist = d; best = palette4; }
+      d = distance(col, palette5); if (d < bestDist) { bestDist = d; best = palette5; }
+      d = distance(col, palette6); if (d < bestDist) { bestDist = d; best = palette6; }
+      d = distance(col, palette7); if (d < bestDist) { bestDist = d; best = palette7; }
+      d = distance(col, palette8); if (d < bestDist) { bestDist = d; best = palette8; }
+      d = distance(col, palette9); if (d < bestDist) { bestDist = d; best = palette9; }
+      d = distance(col, palette10); if (d < bestDist) { bestDist = d; best = palette10; }
+      d = distance(col, palette11); if (d < bestDist) { bestDist = d; best = palette11; }
+      d = distance(col, palette12); if (d < bestDist) { bestDist = d; best = palette12; }
+      d = distance(col, palette13); if (d < bestDist) { bestDist = d; best = palette13; }
+      d = distance(col, palette14); if (d < bestDist) { bestDist = d; best = palette14; }
+      d = distance(col, palette15); if (d < bestDist) { bestDist = d; best = palette15; }
+
+      return best;
+    }
+
     float flow_speed = 0.25;
     float curl_scale = 2.0;
     float curl_intensity = 0.8;
-    float iridescence = 0.3;
-    float contrast = 1.1;
-    float brightness = -0.08;
-    float pixel_size = 14.0;  // 7px base * 2x scale = visible chunky pixels
+    float iridescence = 0.55;  // Increased for more color variety
+    float contrast = 1.2;      // Slightly higher contrast
+    float brightness = -0.05;  // Slightly brighter
+    float pixel_size = 14.0;   // 7px base * 2x scale = visible chunky pixels
 
     float hash(vec2 p) {
       return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453);
@@ -254,13 +337,18 @@
 
       vec3 oilRainbow = thinFilmInterference(thickness * 4.0, flowVariation + t * 0.5);
 
-      float colorMix1 = smoothstep(0.3, 0.7, flow1);
-      float colorMix2 = smoothstep(0.4, 0.6, flow2);
+      // Mix colors - wider range for more variety
+      float colorMix1 = smoothstep(0.2, 0.8, flow1);
+      float colorMix2 = smoothstep(0.3, 0.7, flow2);
+      float colorMix3 = smoothstep(0.35, 0.65, flow3);
 
       vec3 baseColor = mix(color3, color1, colorMix1);
-      baseColor = mix(baseColor, color2, colorMix2 * 0.6);
+      baseColor = mix(baseColor, color2, colorMix2 * 0.7);
+      // Add warm accent based on third flow layer
+      baseColor = mix(baseColor, vec3(0.976, 0.549, 0.290), colorMix3 * 0.25);
 
-      vec3 finalCol = mix(baseColor, oilRainbow, iridescence * 0.5);
+      // Add iridescence - stronger effect
+      vec3 finalCol = mix(baseColor, oilRainbow, iridescence);
 
       float highlight = pow(abs(flow1 - flow2), 2.0) * 2.0;
       finalCol += highlight * vec3(0.1);
@@ -270,7 +358,10 @@
       float vignette = 1.0 - length(uv - 0.5) * 0.4;
       finalCol *= vignette;
 
-      gl_FragColor = vec4(clamp(finalCol, 0.0, 1.0), 1.0);
+      // Quantize to palette
+      finalCol = quantizeToPalette(clamp(finalCol, 0.0, 1.0));
+
+      gl_FragColor = vec4(finalCol, 1.0);
     }
   `;
 

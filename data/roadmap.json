@@ -1,18 +1,27 @@
 {
-  "lastSynced": "2026-01-23T02:00:00Z",
+  "lastSynced": "2026-01-25T04:19:55Z",
   "source": "Surviorslike Kanban.md",
   "columns": {
     "current": {
       "title": "CURRENT FOCUS",
-      "items": []
+      "items": [
+        "Mock out necessary ui.",
+        "Working on a landing page for the demo."
+      ]
     },
     "todo": {
       "title": "COMING NEXT",
-      "items": []
+      "items": [
+        "Implement demo plan according to",
+        "Finish ui - inventory, wand ui, skills window, player character stat panel",
+        "Finish shop... just get it working already."
+      ]
     },
     "done": {
       "title": "DONE",
-      "items": []
+      "items": [
+        "Finish inventory ui. Add background sprite and adjust functionality."
+      ]
     }
   }
 }

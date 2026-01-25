@@ -298,8 +298,7 @@
   border: var(--pixel-border) solid var(--r64-bg-light);
   border-radius: var(--pixel-radius);
   box-shadow: var(--pixel-shadow);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
+  /* No blur - let the palette-limited background show through */
 }
 
 .demo-section__title {
@@ -654,9 +653,11 @@
   border-radius: var(--pixel-radius);
   box-shadow: var(--pixel-shadow);
   padding: 20px 24px;
-  min-width: 300px;
+  min-width: 280px;
   max-width: 400px;
   text-align: left;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
 .demo-newsletter__label {
@@ -679,6 +680,7 @@
 .demo-newsletter__row {
   display: flex;
   gap: 8px;
+  flex-wrap: wrap;
 }
 
 .demo-newsletter__input {
@@ -708,8 +710,11 @@
   border: var(--pixel-border) solid var(--demo-ember);
   border-radius: var(--pixel-radius);
   font-family: var(--title);
+  font-size: 0.85rem;
   cursor: pointer;
   transition: all 0.15s;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .demo-newsletter__btn:hover {

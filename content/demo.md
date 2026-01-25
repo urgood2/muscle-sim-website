@@ -1,5 +1,5 @@
 ---
 layout: demo
-title: "[GAME TITLE] - Early Alpha Demo"
-description: "Stack spells. Break waves. Chill. A cozy apocalypse roguelike combining Noita-style wand building with bullet-heaven swarms."
+title: "Magic or Die - Early Alpha Demo"
+description: "Build weird wands. Melt big waves. A cozy apocalypse roguelike combining Noita-style wand building with bullet-heaven swarms."
 ---
