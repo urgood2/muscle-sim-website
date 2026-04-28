@@ -477,6 +477,7 @@ a:hover {
 .signup-landing h1 {
   margin: 0;
   font-family: var(--title);
+  font-weight: 800;
   font-size: 44px;
   line-height: 1.05;
   letter-spacing: 0;
@@ -541,6 +542,7 @@ a:hover {
   background: var(--dark);
   color: var(--white);
   font-family: var(--title);
+  font-weight: 700;
   font-size: 16px;
   white-space: nowrap;
   cursor: pointer;

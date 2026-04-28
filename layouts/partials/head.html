@@ -16,7 +16,8 @@
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/css/all.min.css">
     <link disabled id="dark-mode-theme" rel="stylesheet" href="/css/dark.css">
-    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    {{ $assetVersion := .Site.Params.asset_version | default now.Unix }}
+    <link rel="stylesheet" type="text/css" href="/css/style.css?v={{ $assetVersion }}">
     <link rel="stylesheet" type="text/css" href="/css/my_style.css">
     <!-- Site Title -->
     {{ $title := print .Site.Title " | " .Title }}
