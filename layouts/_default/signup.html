@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode | default "en-us" }}">
+  {{- partial "head.html" . -}}
+  <body class="signup-landing">
+    {{ $buttondownUsername := .Site.Params.buttondown_username | default "byteden" }}
+    {{ $signupTag := .Params.signup_tag | default "signup-page" }}
+    <main class="signup-landing__shell" aria-labelledby="signup-title">
+      <section class="signup-landing__panel">
+        <div class="signup-landing__copy">
+          <p class="signup-landing__eyebrow">{{ .Params.signup_eyebrow | default "BYTEDEN_GAMES://JOIN_DEVLOG" }}</p>
+          <h1 id="signup-title">{{ .Params.signup_heading | default .Title }}</h1>
+          <p class="signup-landing__lead">{{ .Params.signup_intro | default "Join the Byteden Games mailing list for devlog updates and playtest invites." }}</p>
+          <p class="signup-landing__cadence">{{ .Params.signup_cadence | default "Expect one devlog email per month." }}</p>
+
+          <form class="signup-landing__form"
+                action="https://buttondown.email/api/emails/embed-subscribe/{{ $buttondownUsername }}"
+                method="post"
+                target="popupwindow"
+                onsubmit="window.open('https://buttondown.email/{{ $buttondownUsername }}', 'popupwindow')">
+            <label class="visually-hidden" for="signup-email">Email address</label>
+            <div class="signup-landing__form-row">
+              <input id="signup-email"
+                     class="signup-landing__input"
+                     type="email"
+                     name="email"
+                     placeholder="you@example.com"
+                     autocomplete="email"
+                     inputmode="email"
+                     required
+                     autofocus>
+              <button class="signup-landing__button" type="submit">{{ .Params.signup_button | default "Subscribe" }}</button>
+            </div>
+
+            <p class="signup-landing__fineprint">
+              Playtest invites and devlog updates. Read the <a href="/privacy/">privacy policy</a>. Unsubscribe anytime.
+            </p>
+
+            <input type="hidden" name="embed" value="1">
+            <input type="hidden" name="tag" value="{{ $signupTag }}">
+          </form>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
