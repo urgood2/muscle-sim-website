@@ -1,0 +1,6 @@
+{{ $game := .Site.Data.planet }}
+<section class="game-feature" aria-labelledby="featured-game">
+<a href="/games/into-the-planets-flesh/"><img src="/images/planet/header.jpg" width="460" height="215" alt="{{ $game.name }}"></a>
+<div><h2 id="featured-game"><a href="/games/into-the-planets-flesh/">{{ $game.name }}</a></h2>
+<p>{{ if .IsHome }}{{ index (split $game.short_description ". ") 0 }}.{{ else }}{{ $game.short_description }}{{ end }}</p><a class="retro-btn" href="{{ $game.steam_url }}">Add to your wishlist</a></div>
+</section>

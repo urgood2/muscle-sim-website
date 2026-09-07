@@ -5,7 +5,7 @@
     {{ $buttondownUsername := .Site.Params.buttondown_username | default "byteden" }}
     {{ $signupTag := .Params.signup_tag | default "signup-page" }}
     <main class="signup-landing__shell" aria-labelledby="signup-title">
-      <section class="signup-landing__panel">
+      <section class="signup-landing__panel"><a href="/">← Back to Home</a>
         <div class="signup-landing__copy">
           <p class="signup-landing__eyebrow">{{ .Params.signup_eyebrow | default "BYTEDEN_GAMES://JOIN_DEVLOG" }}</p>
           <h1 id="signup-title">{{ .Params.signup_heading | default .Title }}</h1>
@@ -14,9 +14,7 @@
 
           <form class="signup-landing__form"
                 action="https://buttondown.email/api/emails/embed-subscribe/{{ $buttondownUsername }}"
-                method="post"
-                target="popupwindow"
-                onsubmit="window.open('https://buttondown.email/{{ $buttondownUsername }}', 'popupwindow')">
+                method="post">
             <label class="visually-hidden" for="signup-email">Email address</label>
             <div class="signup-landing__form-row">
               <input id="signup-email"
@@ -26,8 +24,7 @@
                      placeholder="you@example.com"
                      autocomplete="email"
                      inputmode="email"
-                     required
-                     autofocus>
+                     required>
               <button class="signup-landing__button" type="submit">{{ .Params.signup_button | default "Subscribe" }}</button>
             </div>
 

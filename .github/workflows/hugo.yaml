@@ -5,6 +5,7 @@ on:
     branches:
       - main
   workflow_dispatch:
+  pull_request:
 
 permissions:
   contents: read
@@ -40,6 +41,7 @@ jobs:
 
       # ---- configure-pages bumped to v5 for the latest metadata outputs ----
       - name: Configure GitHub Pages
+        if: github.event_name != 'pull_request'
         id: pages
         uses: actions/configure-pages@v5
 
@@ -55,15 +57,20 @@ jobs:
           hugo \
             --gc \
             --minify \
-            --baseURL "${{ steps.pages.outputs.base_url }}/"
+            --destination "${{ runner.temp }}/byteden-public" \
+            --baseURL "${{ steps.pages.outputs.base_url || 'https://byteden.games' }}/"
+
+      - name: Verify generated routes, metadata and local references
+        run: python3 scripts/check_site.py "${{ runner.temp }}/byteden-public"
 
       # ---- switch Pages-artifact to the v3 tag (required for Jan 30 2025) ----
       - name: Upload static assets
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./public
+          path: ${{ runner.temp }}/byteden-public
 
   deploy:
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
     needs: build
     runs-on: ubuntu-latest
     environment:
