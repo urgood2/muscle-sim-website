@@ -1,73 +1,28 @@
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Enable Google Analytics -->
-    {{ if .Site.Params.googleAnalytics }}
-    <script async src="https://www.googletagmanager.com/gtag/js?id={{ .Site.Params.googleAnalytics }}"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-        gtag('config', '{{ .Site.Params.googleAnalytics }}');
-    </script>
-    {{ end }}
-
-    <!-- CSS Styles (including Bootstrap 5 and FontAwesome 6) -->
-    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="/css/all.min.css">
-    <link disabled id="dark-mode-theme" rel="stylesheet" href="/css/dark.css">
-    {{ $assetVersion := .Site.Params.asset_version | default now.Unix }}
-    <link rel="stylesheet" type="text/css" href="/css/style.css?v={{ $assetVersion }}">
-    <link rel="stylesheet" type="text/css" href="/css/my_style.css">
-    <!-- Site Title -->
-    {{ $title := print .Site.Title " | " .Title }}
-    {{ if .IsHome }}{{ $title = .Site.Title }}{{ end }}
-    <title>{{ $title }}</title>
-    {{ $description := .Site.Params.description }}
-    {{ if .IsPage }}{{ $description = .Summary | plainify | truncate 160 }}{{ end }}
-    <meta name="description" content="{{ $description }}">
-    {{ $imageAlt := .Title }}
-    {{ if .IsHome }}{{ $imageAlt = .Site.Title }}{{ end }}
-
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
-    <meta property="og:url" content="{{ .Permalink }}">
-    <meta property="og:title" content="{{ $title }}">
-    <meta property="og:description" content="{{ $description }}">
-    {{ if .IsPage }}
-    {{ with .Resources.GetMatch "*.{png,jpg,jpeg,webp,gif}" }}
-    <meta property="og:image" content="{{ .Permalink }}">
-    <meta property="og:image:alt" content="{{ $imageAlt }}">
-    {{ else }}
-    <meta property="og:image" content="{{ .Site.BaseURL }}images/mastodon_profile.gif">
-    <meta property="og:image:alt" content="{{ $imageAlt }}">
-    {{ end }}
-    {{ else }}
-    <meta property="og:image" content="{{ .Site.BaseURL }}images/mastodon_profile.gif">
-    <meta property="og:image:alt" content="{{ $imageAlt }}">
-    {{ end }}
-    <meta property="og:site_name" content="{{ .Site.Title }}">
-
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="{{ $title }}">
-    <meta name="twitter:description" content="{{ $description }}">
-    {{ with .Site.Params.twitter_handle }}
-    <meta name="twitter:site" content="{{ . }}">
-    <meta name="twitter:creator" content="{{ . }}">
-    {{ end }}
-    {{ if .IsPage }}
-    {{ with .Resources.GetMatch "*.{png,jpg,jpeg,webp,gif}" }}
-    <meta name="twitter:image" content="{{ .Permalink }}">
-    <meta name="twitter:image:alt" content="{{ $imageAlt }}">
-    {{ else }}
-    <meta name="twitter:image" content="{{ .Site.BaseURL }}images/mastodon_profile.gif">
-    <meta name="twitter:image:alt" content="{{ $imageAlt }}">
-    {{ end }}
-    {{ else }}
-    <meta name="twitter:image" content="{{ .Site.BaseURL }}images/mastodon_profile.gif">
-    <meta name="twitter:image:alt" content="{{ $imageAlt }}">
-    {{ end }}
-    <!-- FontAwesome - deferred for performance -->
-    <script src="https://kit.fontawesome.com/37543023ae.js" crossorigin="anonymous" defer></script>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="/js/dark.js"></script>
+<link rel="preload" href="/MX-font/MxPlus_Tandy1K-II_200L.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/Cascadia.ttf" as="font" type="font/ttf" crossorigin>
+{{ if in (slice "about" "work" "links") .Layout }}<link rel="stylesheet" href="/css/bootstrap.min.css">{{ end }}
+{{ $css := resources.FromString "css/site.css" (printf "%s\n%s\n%s" (readFile "static/css/style.css") (readFile "static/css/my_style.css") (readFile "static/css/refinements.css")) | minify | fingerprint }}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}">
+{{ $title := partial "page-title.html" . }}
+{{ if .IsHome }}{{ $title = .Site.Title }}{{ else }}{{ $title = printf "%s | %s" $title .Site.Title }}{{ end }}
+{{ $description := .Description | default (.Summary | plainify) | default .Site.Params.description }}
+{{ $image := .Params.social_image | default "/images/social-default.jpg" | absURL }}
+<title>{{ $title }}</title>
+<meta name="description" content="{{ $description }}">
+<link rel="canonical" href="{{ .Permalink }}">
+{{ with .Params.quickpost_revision }}<meta name="quickpost-revision" content="{{ . }}">{{ end }}
+{{ if .Params.noindex }}<meta name="robots" content="noindex, follow">{{ end }}
+<meta property="og:type" content="{{ if eq .Section "post" }}article{{ else }}website{{ end }}">
+<meta property="og:url" content="{{ .Permalink }}"><meta property="og:title" content="{{ $title }}">
+<meta property="og:description" content="{{ $description }}"><meta property="og:image" content="{{ $image }}">
+<meta property="og:image:alt" content="{{ .Params.social_image_alt | default .Site.Title }}">
+<meta property="og:site_name" content="{{ .Site.Title }}">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{{ $title }}">
+<meta name="twitter:description" content="{{ $description }}"><meta name="twitter:image" content="{{ $image }}">
+<meta name="twitter:image:alt" content="{{ .Params.social_image_alt | default .Site.Title }}">
+<meta name="twitter:site" content="{{ .Site.Params.twitter_handle }}">
+<link rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" href="{{ "index.xml" | absURL }}">
 </head>

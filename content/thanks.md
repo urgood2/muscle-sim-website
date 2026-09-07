@@ -1,8 +1,9 @@
 ---
+noindex: true
 title: "Thanks for Subscribing!"
 ---
 
-## SUBSCRIPTION_CONFIRMED
+## Check your inbox
 
 Check your inbox for a confirmation email from Buttondown.
 

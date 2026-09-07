@@ -1,0 +1,53 @@
+:root { color-scheme:light; --blue:#006b91; --accent:var(--blue); }
+body { margin:0; }.visually-hidden { position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important; }
+.game-gallery { display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:32px 0; }.game-gallery img { display:block; }
+:root[data-theme="dark"] { color-scheme:dark; --bg-primary:#101412; --bg-secondary:#171e19; --text-primary:#e0eadc; --text-secondary:#a9b8aa; --accent:#a9dc8e; --dark:#e0eadc; --grey:#a9b8aa; --white:#101412; --offwhite:#171e19; --blue:#a9dc8e; --lighter-blue:#253729; --red:#ff9383; }
+html,body { overflow-x:visible; color:var(--text-primary); background-color:var(--bg-primary); }
+body { background-image:linear-gradient(var(--bg-secondary) 1px,transparent 1px),linear-gradient(90deg,var(--bg-secondary) 1px,transparent 1px); background-size:25px 25px; }
+body, p, .post-body, .post-body li { font-family:'Cascadia Code',monospace; font-size:16px; line-height:1.65; }
+.container { max-width:800px; margin-left:auto; margin-right:auto; }
+main { padding:24px 0 48px; min-height:70vh!important; }
+main > .container { background:var(--bg-primary); }
+a { color:var(--accent); text-underline-offset:3px; overflow-wrap:anywhere; }
+button,input,textarea { font:inherit; }
+button,a,input,textarea { touch-action:manipulation; }
+:focus-visible { outline:3px solid var(--accent); outline-offset:4px; }
+.skip-link { position:absolute; left:12px; top:-100px; z-index:10; background:var(--bg-primary); padding:8px; }
+.skip-link:focus { top:8px; }
+.site-nav { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:16px; padding-top:20px; padding-bottom:20px; border-bottom:2px solid var(--dark); }
+.brand { font-size:26px; text-decoration:none; color:var(--text-primary); }
+.nav-items { display:flex; flex-wrap:wrap; gap:16px; align-items:center; }
+.nav-items a { font-size:20px; }
+#dark-mode-toggle { min-width:44px; min-height:44px; background:var(--bg-primary); color:var(--text-primary); border:1px solid var(--dark); }
+.site-heading { font-family:var(--title); font-size:clamp(30px,6vw,48px); line-height:1.15; margin:20px 0 28px; overflow-wrap:anywhere; }
+h2,h3 { overflow-wrap:anywhere; }
+.game-feature { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.5fr); gap:20px; padding:20px; border:2px solid var(--dark); box-shadow:4px 4px var(--dark); margin-bottom:36px; }
+.game-feature h2 { font-size:27px; margin:0 0 12px; }.game-feature p { font-size:14px; }
+.game-feature img { width:100%; height:auto; }
+.feed-entry { padding:24px 0 30px; border-bottom:1px dashed var(--grey); }
+.feed-meta { display:flex; gap:12px; align-items:center; margin-bottom:16px; }.feed-meta img { border-radius:50%; }
+.feed-title { font-size:25px; }.post-body { overflow-wrap:anywhere; }.post-body p { margin-bottom:18px; }
+img,video { max-width:100%; height:auto; }video { display:block; width:100%; background:#000; margin:20px 0; }
+pre { overflow:auto; max-width:100%; }table { display:block; overflow:auto; max-width:100%; }
+.pagination,.game-actions { display:flex; align-items:center; flex-wrap:wrap; gap:24px; padding:24px 0; }
+.pagination { justify-content:space-between; }
+.site-footer { border-top:2px solid var(--dark); padding-top:20px; padding-bottom:30px; }.site-footer nav { display:flex; flex-wrap:wrap; gap:12px; }
+.newsletter-terminal,.card,.game-card { background:var(--bg-secondary); color:var(--text-primary); }
+.newsletter-terminal__header { overflow-wrap:anywhere; white-space:normal; font-size:clamp(18px,4vw,27px); }
+.newsletter-terminal__form { flex-wrap:wrap; }.newsletter-terminal__input { min-width:0; color:var(--text-primary); background:var(--bg-primary); }
+.card { cursor:auto; transition:none; }.card:hover { transform:none; box-shadow:4px 4px var(--dark); }
+.text-dark,.text-secondary { color:var(--text-secondary)!important; }.link-card { flex-wrap:wrap; gap:8px; }
+.game-section { margin:40px 0; }.game-section h2 { font-size:30px; }.game-facts { display:flex; gap:28px; flex-wrap:wrap; }.game-facts dt { font-size:14px; color:var(--text-secondary); }
+.retro-btn { white-space:normal; background:var(--bg-primary); color:var(--text-primary); }
+.signup-landing__panel { background:var(--bg-primary); color:var(--text-primary); }
+@media(max-width:560px) { .game-feature { grid-template-columns:1fr; padding:16px; }.game-feature > a { max-width:320px; }.nav-items { gap:12px; }.nav-items a { font-size:18px; }.newsletter-terminal { padding:18px; }.newsletter-terminal__form > * { max-width:100%; }.game-facts { gap:18px; } }
+@media(prefers-reduced-motion:reduce) { *,*::before,*::after { scroll-behavior:auto!important; animation:none!important; transition:none!important; } }
+.brand { font-size:20px; }.nav-items a { font-size:16px; }.nav-items { gap:14px; }.site-nav { gap:12px; }
+.site-nav { position:relative;display:block; }.brand { display:block;padding-right:48px; }.nav-items { padding-top:12px; }#dark-mode-toggle { position:absolute;right:15px;top:14px; }
+.site-heading { font-size:clamp(27px,4vw,36px); }.game-feature h2 { font-size:23px; }
+.home-feed .game-feature { grid-template-columns:170px minmax(0,1fr); margin-top:12px; padding:18px; }
+.home-feed .retro-btn { font-size:14px; padding:8px 12px; }.home-feed .game-feature p { margin-bottom:12px; }
+.post-body img { border-radius:0; box-shadow:none; margin-left:0; margin-right:0; }
+.signup-landing__shell { min-width:0; grid-template-columns:minmax(0,1fr); }.signup-landing__panel,.signup-landing__copy { min-width:0; }
+.signup-landing__eyebrow,.signup-landing h1 { overflow-wrap:anywhere; }.signup-landing h1 { font-size:clamp(24px,6vw,36px); }
+@media(max-width:560px) { .brand { font-size:20px; }.nav-items a { font-size:15px; }.home-feed .game-feature { grid-template-columns:96px minmax(0,1fr); padding:12px; gap:12px; }.home-feed .game-feature h2 { font-size:18px; }.home-feed .game-feature p { font-size:13px; }.home-feed .retro-btn { font-size:12px; }.signup-landing__copy { padding:24px 16px; } }

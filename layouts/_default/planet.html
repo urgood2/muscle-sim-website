@@ -1,0 +1,13 @@
+{{ define "main" }}{{ $g := .Site.Data.planet }}
+<article class="container planet-page">
+<header><h1 class="site-heading">{{ $g.name }}</h1><p class="game-description">{{ $g.short_description }}</p>
+<div class="game-actions"><a class="retro-btn" href="{{ $g.steam_url }}">Add to your wishlist</a><a href="{{ $g.demo_url }}">Download Demo</a></div>
+<dl class="game-facts"><div><dt>Developer</dt><dd>{{ $g.developer }}</dd></div><div><dt>Release Date</dt><dd>{{ $g.release }}</dd></div><div><dt>OS</dt><dd>Windows</dd></div></dl></header>
+<a href="{{ $g.steam_url }}"><img class="game-hero" src="/images/planet/hero.webp" width="1440" height="810" alt="{{ $g.name }}"></a>
+{{ range $i, $section := $g.sections }}<section class="game-section"><h2 id="mechanic-{{ $i }}">{{ .heading }}</h2>{{ range .paragraphs }}<p>{{ . }}</p>{{ end }}
+{{ with .clip }}<video controls playsinline preload="none" width="1160" height="600" poster="{{ replace . ".mp4" ".poster.avif" }}" aria-labelledby="mechanic-{{ $i }}"><source src="{{ . }}" type="video/mp4"></video>{{ end }}</section>{{ end }}
+<section class="game-gallery" aria-label="Screenshots">
+{{ range $number := slice "01" "02" "03" "05" }}<a href="/images/planet/screenshot-{{ $number }}.jpg" aria-label="Screenshot {{ $number }}"><img src="/images/planet/screenshot-{{ $number }}.jpg" loading="lazy" width="1920" height="1080" alt=""></a>{{ end }}
+</section>
+<div class="game-actions"><a class="retro-btn" href="{{ $g.steam_url }}">Add to your wishlist</a><a href="{{ $g.demo_url }}">Download Demo</a></div>
+</article>{{ end }}

@@ -1,21 +1,18 @@
-var toggle = document.getElementById("dark-mode-toggle");
-var darkTheme = document.getElementById("dark-mode-theme");
-
-toggle.addEventListener("click", () => {    
-    if (toggle.className === "btn fas fa-moon") {
-        setTheme("dark");
-    } else if (toggle.className === "btn fas fa-sun") {
-        setTheme("light");
-    }
-});
-
-function setTheme(mode) {
-    localStorage.setItem("dark-mode-storage", mode);
-    if (mode === "dark") {
-        darkTheme.disabled = false;
-        toggle.className = "btn fas fa-sun";
-    } else if (mode === "light") {
-        darkTheme.disabled = true;
-        toggle.className = "btn fas fa-moon";
-    }
-}
+(() => {
+  let theme = 'light';
+  try { theme = localStorage.getItem('dark-mode-storage') || theme; } catch (_) {}
+  const apply = (value) => {
+    document.documentElement.dataset.theme = value === 'dark' ? 'dark' : 'light';
+    const button = document.getElementById('dark-mode-toggle');
+    if (button) button.setAttribute('aria-pressed', String(value === 'dark'));
+  };
+  apply(theme);
+  document.addEventListener('DOMContentLoaded', () => {
+    apply(document.documentElement.dataset.theme);
+    document.getElementById('dark-mode-toggle')?.addEventListener('click', () => {
+      const value = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+      apply(value);
+      try { localStorage.setItem('dark-mode-storage', value); } catch (_) {}
+    });
+  });
+})();

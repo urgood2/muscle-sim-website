@@ -3,9 +3,7 @@
 
   <form class="newsletter-terminal__form"
         action="https://buttondown.email/api/emails/embed-subscribe/{{ .Site.Params.buttondown_username | default "byteden" }}"
-        method="post"
-        target="popupwindow"
-        onsubmit="window.open('https://buttondown.email/{{ .Site.Params.buttondown_username | default "byteden" }}', 'popupwindow')">
+        method="post">
     
     <label class="newsletter-terminal__prompt" for="newsletter-email">&gt; EMAIL</label>
 

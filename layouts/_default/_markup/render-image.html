@@ -1,0 +1,4 @@
+{{ $src := .Destination }}
+{{ if hasPrefix $src "images/" }}{{ $src = printf "/%s" $src }}{{ end }}
+{{ $local := printf "static/%s" (strings.TrimPrefix "/" $src) }}
+<img src="{{ $src | safeURL }}" alt="{{ .Text }}" loading="lazy" decoding="async"{{ if fileExists $local }}{{ with imageConfig $local }} width="{{ .Width }}" height="{{ .Height }}"{{ end }}{{ end }}{{ with .Title }} title="{{ . }}"{{ end }}>

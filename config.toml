@@ -14,7 +14,7 @@ copyright = "Byteden Games ©"
   mainSections = ["post"]
   buttondown_username = "byteden"
   twitter_handle = "@byteden"
-  asset_version = "20260428-signup"
+  asset_version = "20260907"
   
   [[params.social]]
     name = "Twitter"
@@ -43,39 +43,22 @@ copyright = "Byteden Games ©"
 
 
 [menu]
-#  [[menu.main]]
-#    name = "Digital Garden"
-#    url = "/garden/"
-#    weight = 1
-  [[menu.main]]
-    name = "Home"
-    url = "/"
-    weight = 1
-  [[menu.main]]
-    name = "Demo"
-    url = "/demo/"
-    weight = 2
   [[menu.main]]
     name = "Games"
     url = "/work/"
-    weight = 6
+    weight = 1
   [[menu.main]]
-    name = "Ko-fi"
-    url = "/patreon/"
-    weight = 4
-   [[menu.main]]
+    name = "Devlog"
+    url = "/post/"
+    weight = 2
+  [[menu.main]]
     name = "About"
     url = "/about/"
-    weight = 5
-  [[menu.main]]
-    name = "Posts"
-    url = "/post/"
     weight = 3
   [[menu.main]]
     name = "Links"
     url = "/links/"
-    weight = 7
-
+    weight = 4
 
 [taxonomies]
   garden_tags = 'garden_tags'
@@ -103,3 +86,7 @@ enableRobotsTXT = true
 
 [outputs]
   home = ["HTML", "RSS"]
+
+[frontmatter]
+  date = ["date", "created", ":filename"]
+  lastmod = ["lastmod", "modified", "date", "created"]

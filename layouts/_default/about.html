@@ -4,7 +4,7 @@
   <div class="row justify-content-center mb-5">
     <div class="col-12">
       <div class="card p-4">
-        <h2 class="text-center mx-font mb-4">> SYSTEM_IDENTITY: {{ .Title | upper }}</h2>
+        <h1 class="site-heading">{{ .Title }}</h1>
         
         <div class="cascadia fs-5">
           {{ if .Params.details }}
@@ -32,19 +32,19 @@
     <form action="https://formsubmit.co/2f732a8f870cc6d018591ee6175025de" method="POST">
       <div class="row">
         <div class="col-md-6 mb-3">
-          <label class="mx-font mb-1">> IDENTIFIER_NAME</label>
-          <input class="newsletter-terminal__input w-100" id="name" name="name" placeholder="{{ .name }}..." type="text" required>
+          <label for="name" class="mx-font mb-1">Name</label>
+          <input class="newsletter-terminal__input w-100" id="name" name="name" placeholder="{{ .name }}..." type="text" autocomplete="name" required>
         </div>
         
         <div class="col-md-6 mb-3">
-          <label class="mx-font mb-1">> CONTACT_FREQUENCY (EMAIL)</label>
-          <input class="newsletter-terminal__input w-100" id="email" name="email" placeholder="{{ .email }}..." type="email" required>
+          <label for="email" class="mx-font mb-1">Email</label>
+          <input class="newsletter-terminal__input w-100" id="email" name="email" placeholder="{{ .email }}..." type="email" autocomplete="email" required>
         </div>
       </div>
 
       <div class="mb-4">
-        <label class="mx-font mb-1">> DATA_PACKET (MESSAGE)</label>
-        <textarea class="newsletter-terminal__input w-100" id="feedback" name="feedback" placeholder="{{ .message }}..." rows="4" style="border-bottom: 2px solid var(--dark);"></textarea>
+        <label for="feedback" class="mx-font mb-1">Message</label>
+        <textarea class="newsletter-terminal__input w-100" id="feedback" name="feedback" placeholder="{{ .message }}..." rows="4" required style="border-bottom: 2px solid var(--dark);"></textarea>
       </div>
 
       <div class="text-center">

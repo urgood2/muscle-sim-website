@@ -1,4 +1,5 @@
 ---
+noindex: true
 title: "Save Your Spot"
 layout: "signup"
 url: "/signup/"

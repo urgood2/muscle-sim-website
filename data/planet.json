@@ -1,0 +1,44 @@
+{
+  "name": "Into the Planet's Flesh",
+  "short_description": "Hatch parasites and infest the earth in this incremental game. Create a gruesome spectacle as your colony spreads like a disease through the planet. Discover what happens when your parasites VENTURE TOO DEEP.",
+  "steam_url": "https://store.steampowered.com/app/4724190/Into_the_Planets_Flesh/",
+  "demo_url": "https://store.steampowered.com/app/4797850/",
+  "developer": "Chugget",
+  "release": "Coming soon",
+  "sections": [
+    {
+      "heading": "Into the Planet's Flesh is a cozy, creepy incremental game about overrunning a planet.",
+      "paragraphs": [
+        "Hatch all kinds of parasites, spread veined buildings through the earth, and collect many different grotesque resources to make the planet hurtle toward its doom even faster."
+      ],
+      "clip": null
+    },
+    {
+      "heading": "Hatch larvae. Put them to work.",
+      "paragraphs": [
+        "Clicking to harvest is the only mechanic you need to know in order to get started. You'll unlock interesting units and buildings that do all the heavy lifting for you."
+      ],
+      "clip": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4724190/extras/80d8076125105282653f1d70dbf95733.mp4?t=1787539311"
+    },
+    {
+      "heading": "Grow  organs that unlock new resources.",
+      "paragraphs": [
+        "As your colony grows, so will a grotesque spectacle--watch what happens when these malicious bugs show up in a pristine natural environment.",
+        "Play actively if you want, but it's totally cool to let the colony run by itself while you check on it from time to time. The visual spectacle is fun even if you aren't constantly clicking on it!"
+      ],
+      "clip": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4724190/extras/1267a39e4281c67b4bf86aa46e4aa51b.mp4?t=1787539311"
+    },
+    {
+      "heading": "The planet will notice what you're up to.",
+      "paragraphs": [
+        "But beware--the planet won't give up its resources so easily.",
+        "Your environment changes visibly as you make progress throughout the game.",
+        "At first, it'll just try to scare you, but...",
+        "Soon enough, something will awaken from deep under the earth..."
+      ],
+      "clip": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4724190/extras/817659c88b98794a400fc47a530df121.mp4?t=1787539311"
+    }
+  ],
+  "source_url": "https://store.steampowered.com/api/appdetails?appids=4724190&l=english",
+  "retrieved": "2026-09-07"
+}

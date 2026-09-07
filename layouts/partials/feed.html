@@ -1,0 +1,14 @@
+<section class="posts" aria-label="Devlog">
+{{ range .Pages }}
+<article class="feed-entry">
+<header class="feed-meta"><img src="{{ .Site.Params.author_avatar }}" width="36" height="36" alt="" loading="lazy"><a href="{{ .RelPermalink }}"><time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "January 2, 2006" }}</time></a></header>
+{{ if and .Title (not .Params.date_title) }}<h2 class="feed-title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>{{ end }}
+<div class="post-body">{{ if gt .WordCount 180 }}<p>{{ .Plain | truncate 700 }}</p><a href="{{ .RelPermalink }}">[ READ ]</a>{{ else }}{{ .Content }}{{ end }}</div>
+</article>
+{{ end }}
+</section>
+<nav class="pagination" aria-label="Pagination">
+{{ with .Pager.Prev }}<a href="{{ .URL }}">← Newer</a>{{ end }}
+<span>{{ .Pager.PageNumber }} / {{ .Pager.TotalPages }}</span>
+{{ with .Pager.Next }}<a href="{{ .URL }}">Older →</a>{{ end }}
+</nav>

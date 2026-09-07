@@ -1,7 +1,7 @@
 {{ define "main" }}
 <section class="container" style="max-width: 1000px;">
   <div class="py-5">
-    <h3 class="display-2 mb-5 text-center mx-font">> PROJECT_DATABASE</h3>
+    <h1 class="site-heading">{{ .Title }}</h1>{{ partial "game-feature.html" . }}
     
     <div class="row">
     {{ range .Params.content }}
@@ -9,7 +9,7 @@
         <div class="game-card">
           {{ $title := .title }}
           {{ with .image }}
-          <img src="{{ . }}" alt="{{ $title | default "Game Screenshot" }}" class="img-fluid">
+          <img loading="lazy" src="{{ . }}" alt="{{ $title | default "Game Screenshot" }}" class="img-fluid">
           {{ end }}
           
           <div class="game-card-body flex-grow-1">
@@ -24,9 +24,9 @@
           
           <div class="game-card-footer mt-auto pt-3">
             {{ range .buttons }}
-            <a class="retro-btn w-100 text-center" href="{{ .url }}">
+            {{ if eq .url "/" }}<span class="retro-btn w-100 text-center">{{ else }}<a class="retro-btn w-100 text-center" href="{{ .url }}">{{ end }}
               [ {{ .label | upper }} ]
-            </a>
+            {{ if eq .url "/" }}</span>{{ else }}</a>{{ end }}
             {{ end }}
           </div>
         </div>
